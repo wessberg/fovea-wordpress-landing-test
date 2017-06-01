@@ -1,0 +1,28 @@
+/*
+Theme Name: Fovea
+Author: Frederik Wessberg
+Author URI: https://github.com/wessberg
+Version: 1.0
+Text Domain: fovea
+License: MIT
+License URI: https://opensource.org/licenses/MIT
+Description: A theme for the Fovea landing page.
+Template: Fovea
+*/
+
+html, body {
+    -ms-overflow-style: auto;
+    -webkit-touch-callout: none !important;
+    overflow: hidden;
+}
+
+html {
+    overflow: hidden;
+    height: 100%;
+}
+
+body {
+    background-color: var(--color-background);
+    margin: 0;
+    padding: 0;
+}
