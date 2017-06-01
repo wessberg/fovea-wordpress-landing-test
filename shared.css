@@ -17,7 +17,7 @@ Template: Fovea
     /* -- Private colors -- */
     --_rgb-inner-black: 0, 0, 0;
     --_rgb-inner-white: 255, 255, 255;
-    --_rgb-inner-primary: 76, 175, 80;
+    --_rgb-inner-primary: 86, 207, 119;
     --_rgb-inner-accent: 255, 152, 0;
     --_rgb-inner-red: 221, 44, 0;
 
@@ -112,6 +112,7 @@ Template: Fovea
     /* Padding/Margin (distance between elements in general) */
 
     --distance-minimum: 16px;
+    --distance-regular: 24px;
 
     /* Duration */
     --duration-short: 100ms;
@@ -134,11 +135,22 @@ Template: Fovea
     --easing-acceleration-curve: cubic-bezier(0.4, 0.0, 1, 1);
     --easing-sharp-curve: cubic-bezier(0.4, 0.0, 0.6, 1);
 
+    /* Width */
+
+    --width-icon-small: 24px;
+    --width-icon-medium: 30px;
+    --width-icon-large: 40px;
+    --width-icon-largest: 61px;
+
     /* Height */
     --app-bar-landscape-height-mobile: 48px;
     --app-bar-portrait-height-mobile: 56px;
     --app-bar-landscape-height-desktop: 64px;
     --app-bar-portrait-height-desktop: 64px;
+    --height-icon-small: 24px;
+    --height-icon-medium: 30px;
+    --height-icon-large: 40px;
+    --height-icon-largest: 61px;
 
     /* Rounding */
     --box-radius: 2px;
@@ -151,6 +163,9 @@ Template: Fovea
     --shadow-level5: 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12), 0 5px 5px -3px rgba(0, 0, 0, .1);
     --shadow-level6: 0 16px 24px 2px rgba(0, 0, 0, .14), 0 6px 30px 5px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .1);
     --shadow-level7: 0 9px 46px 8px rgba(0, 0, 0, .14), 0 24px 38px 3px rgba(0, 0, 0, .12), 0 11px 15px -7px rgba(0, 0, 0, .1);
+
+    /* Line height */
+    --line-height-body: 1.5;
 
     /* Fonts */
     --font-family: "Roboto", "Noto", "Helvetica Neue", "Arial", "Verdana", Verdana, sans-serif;
@@ -170,10 +185,8 @@ Template: Fovea
     --font-weight-display2: var(--font-weight-regular);
     --font-weight-display3: var(--font-weight-regular);
     --font-weight-display4: var(--font-weight-light);
-    --font-size-body-desktop: 13px;
-    --font-size-body-mobile: 14px;
-    --font-size-subheading-desktop: 15px;
-    --font-size-subheading-mobile: 16px;
+    --font-size-body: 14px;
+    --font-size-subheading: 16px;
     --font-size-button: 14px;
     --font-size-caption: 12px;
     --font-size-title: 20px;
@@ -234,8 +247,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 small, strong, p, option, label, span, td {
-    font-size: var(--font-size-body-mobile);
-    line-height: var(--font-size-body-mobile);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
 }
 
 small {
@@ -323,8 +336,4 @@ hr {
 
 /* An attempt to target desktop browsers only */
 @media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1), screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
-    small, strong, p, option, label, span, td {
-        font-size: var(--font-size-body-desktop);
-        line-height: var(--font-size-body-desktop);
-    }
 }

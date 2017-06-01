@@ -1,0 +1,122 @@
+import {Component} from "../Component/Component";
+import {IIconComponent} from "./IIconComponent";
+import {ISvgIconUtil} from "../../service/SvgIconUtil/Interface/ISvgIconUtil";
+import {SvgIconUtil} from "../../service/SvgIconUtil/SvgIconUtil";
+import {IIcon} from "../../asset/Icon/Interface/IIcon";
+
+export class IconComponent extends Component implements IIconComponent {
+	private static readonly svgIconUtil: ISvgIconUtil = new SvgIconUtil();
+	public icon: IIcon|null;
+	public svg: SVGElement|null;
+
+	static get observedAttributes (): string[] {
+		return ["icon"];
+	}
+
+	public static styles (): string {
+		return `
+			:host-context([center]) {
+				margin: auto;
+			}
+			
+			#fill_target,
+			:host {
+				fill: var(--color-icon-dark);
+			}
+			
+			:host([light]) #fill_target,
+			:host([light]) {
+				fill: var(--color-icon-light);
+			}
+			
+			:host([dark]) #fill_target,
+			:host([dark]) {
+				fill: var(--color-icon-dark);
+			}
+			
+			:host([primary]) #fill_target,
+			:host([primary]) {
+				fill: var(--color-primary-100);
+			}
+			
+			:host([accent]) #fill_target,
+			:host([accent]) {
+				fill: var(--color-accent-100);
+			}
+			
+			:host([warning]) #fill_target,
+			:host([warning]) {
+				fill: var(--color-red-100);
+			}
+			
+			:host {
+				user-select: none;
+				backface-visibility: hidden;
+				transform: translate3d(0,0,0);
+				position: relative;
+				vertical-align: middle;
+				width: var(--width-icon-small);
+				height: var(--height-icon-small);
+				pointer-events: none;
+				contain: size layout style;
+				overflow: hidden;
+				flex-shrink: 0;
+				display: inline-flex;
+				justify-content: center;
+				align-items: center;
+			}
+			
+			:host([small]) {
+				width: var(--width-icon-small);
+				height: var(--height-icon-small);
+			}
+			
+			:host([medium]) {
+				width: var(--width-icon-medium);
+				height: var(--height-icon-medium);
+			}
+			
+			:host([large]) {
+				width: var(--width-icon-large);
+				height: var(--height-icon-large);
+			}
+			
+			:host([largest]) {
+				width: var(--width-icon-largest);
+				height: var(--height-icon-largest);
+			}
+		`;
+	}
+
+	protected attributeChangedCallback (attrName: string, _: string, newVal: string): void {
+		switch (attrName) {
+
+			case "icon":
+				if (newVal != null) {
+					const svg = IconComponent.svgIconUtil.buildIconFromName(newVal);
+					if (svg == null) throw ReferenceError(`Failed to build an SVG for icon: ${newVal}`);
+					this.svg = svg;
+					this.setSvg(svg);
+				} else {
+					this.svg = null;
+					this.clearSvg();
+				}
+				break;
+		}
+	}
+
+	private setSvg (svg: SVGElement): void {
+		if (this.shadowRoot != null) this.shadowRoot.appendChild(svg);
+		else this.appendChild(svg);
+	}
+
+	private clearSvg (): void {
+		const elem = this.shadowRoot != null ? this.shadowRoot : this;
+		const svg = elem.querySelector("svg");
+		if (svg == null) return;
+		elem.removeChild(svg);
+	}
+
+}
+
+IconComponent.define("icon-element");

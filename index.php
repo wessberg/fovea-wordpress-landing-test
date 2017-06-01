@@ -1,2 +1,3 @@
 <?php get_header(); ?>
-<card-element></card-element>
+
+<home-frame-element></home-frame-element>
