@@ -3,6 +3,7 @@ import {Component, selector} from "../Component/Component";
 import "../DataBindingExampleComponent/DataBindingExampleComponent";
 import "../PrecompileExampleComponent/PrecompileExampleComponent";
 import "../PostcompileExampleComponent/PostcompileExampleComponent";
+import "../ToolsComponent/ToolsComponent";
 
 @selector("summary-element")
 export class SummaryComponent extends Component implements ISummaryComponent {
@@ -19,7 +20,7 @@ export class SummaryComponent extends Component implements ISummaryComponent {
 				display: inline-flex;
 				flex-direction: column;
 				margin: 0;
-				padding: var(--distance-minimum);
+				padding: var(--distance-minimum) var(--distance-minimum) 100px var(--distance-minimum);
 			}
 			
 			h4, h5 {

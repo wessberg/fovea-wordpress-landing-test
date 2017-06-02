@@ -1,6 +1,7 @@
 import "../../Component/HighlightsComponent/HighlightsComponent";
 import "../../Component/HomeHeroComponent/HomeHeroComponent";
 import "../../Component/SummaryComponent/SummaryComponent";
+import "../../Component/ToolsComponent/ToolsComponent";
 
 import {Page} from "../Page/Page";
 import {IHomePage} from "./Interface/IHomePage";
@@ -14,6 +15,7 @@ export class HomePage extends Page implements IHomePage {
 			<home-hero-element></home-hero-element>
 			<highlights-element></highlights-element>
 			<summary-element></summary-element>
+			<tools-element></tools-element>
 		`;
 	}
 

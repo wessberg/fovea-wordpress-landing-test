@@ -158,7 +158,8 @@
     --width-icon-large: 40px;
     --width-icon-larger: 61px;
     --width-icon-huge: 100px;
-    --width-icon-extreme: 150px;
+    --width-icon-extreme: 284px;
+    --width-frame-max: 830px;
 
     /* Height */
     --app-bar-landscape-height-mobile: 48px;
@@ -170,8 +171,8 @@
     --height-icon-large: 40px;
     --height-icon-larger: 61px;
     --height-icon-huge: 100px;
-    --height-icon-extreme: 150px;
-    --height-hero: 515px;
+    --height-icon-extreme: 284px;
+    --height-hero: 615px;
 
     /* Rounding */
     --box-radius: 2px;
@@ -255,6 +256,7 @@ span,
 td,
 tr,
 pre,
+a,
 tbody {
     font-family: var(--font-family);
     user-select: none;
@@ -262,7 +264,7 @@ tbody {
     text-rendering: var(--font-rendering);
 }
 
-p, option, label, small, span, td, pre {
+p, option, label, small, span, td, pre, a {
     margin: 0;
 }
 
@@ -270,7 +272,7 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0 0 20px 0;
 }
 
-small, p, option, label, span, td, pre {
+small, p, option, label, span, td, pre, a {
     font-size: var(--font-size-body);
     line-height: var(--line-height-body);
 }
@@ -283,8 +285,18 @@ strong {
     font-weight: var(--font-weight-emphasized);
 }
 
-small, p, option, label, span, td {
+small, p, option, label, span, td, a {
     font-weight: var(--font-weight-body);
+}
+
+a {
+    color: var(--color-primary-100);
+    cursor: pointer;
+    transition: color var(--duration-medium) var(--easing-standard-curve);
+}
+
+a:hover {
+    color: var(--color-primary-120);
 }
 
 p,

@@ -10,7 +10,7 @@ export class PostcompileExampleComponent extends Component implements IPostcompi
 			:host {
 				text-align: center;
 				width: 100%;
-				max-width: 830px;
+				max-width: var(--width-frame-max);
 				justify-content: center;
 				align-content: center;
 				align-self: center;

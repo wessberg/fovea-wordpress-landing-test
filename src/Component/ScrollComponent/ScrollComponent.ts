@@ -6,9 +6,6 @@ import {agentDetector, eventUtil, waitOperations} from "../../Service/Services";
 export class ScrollComponent extends Component implements IScrollComponent {
 	private static BOUND_BODY_LISTENER: boolean = false;
 	public role = "list";
-	protected lockedPaddingTop: number|null;
-	protected lockedMarginTop: number|null;
-	protected delta: number = 0;
 
 	constructor () {
 		super();
@@ -62,30 +59,6 @@ export class ScrollComponent extends Component implements IScrollComponent {
 				overflow: scroll;
 			}
 		`;
-	}
-
-	protected get _scrollHeight (): number {
-		return this.scrollHeight - this.offsetHeight;
-	}
-
-	protected get movingUp (): boolean {
-		return this.delta < 0;
-	}
-
-	protected get movingDown (): boolean {
-		return this.delta > 0;
-	}
-
-	private get marginTop (): number {
-		if (this.lockedMarginTop != null) return this.lockedMarginTop;
-		const style = window.getComputedStyle(this);
-		return parseInt(style.getPropertyValue("margin-top"));
-	}
-
-	private get paddingTop (): number {
-		if (this.lockedPaddingTop) return this.lockedPaddingTop;
-		const style = window.getComputedStyle(this);
-		return parseInt(style.getPropertyValue("padding-top"));
 	}
 
 	private static onBodyTouchMove (e: TouchEvent): void {
