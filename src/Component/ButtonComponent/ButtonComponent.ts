@@ -180,7 +180,7 @@ export class ButtonComponent extends Component implements IButtonComponent {
 		}
 		
 		:host(:hover) {
-			background: var(--color-black-12);
+			background: var(--color-black-06);
 		}
 
 		:host[disabled] {

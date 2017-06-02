@@ -24,6 +24,8 @@
     --color-black-38: rgba(var(--_rgb-inner-black), 0.38);
     --color-black-26: rgba(var(--_rgb-inner-black), 0.26);
     --color-black-12: rgba(var(--_rgb-inner-black), 0.12);
+    --color-black-06: rgba(var(--_rgb-inner-black), 0.06);
+    --color-black-02: rgba(var(--_rgb-inner-black), 0.02);
 
     --color-white-100: rgb(var(--_rgb-inner-white));
     --color-white-87: rgba(var(--_rgb-inner-white), 0.87);

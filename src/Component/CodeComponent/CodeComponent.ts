@@ -30,10 +30,16 @@ export class CodeComponent extends Component implements ICodeComponent {
 				max-height: inherit;
 			}
 			
+			:host,
+			scroll-element,
+			::slotted(*) {
+				user-select: text !important;
+				cursor: text !important;
+			}
+			
 			::slotted(*) {
 				font-family: var(--font-family-monospace) !important;
 				color: var(--color-white-87);
-				user-select: text !important;
 				font-size: var(--font-size-mono);
 				line-height: var(--font-size-mono);
 				display: inline;
