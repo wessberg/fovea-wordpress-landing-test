@@ -30,12 +30,17 @@ export class HomeHeroComponent extends Component implements IHomeHeroComponent {
 				color: var(--color-primary-text-light);
 			}
 			
+			h3, h5, strong {
+				user-select:text;
+			}
+			
 			h3 {
 				font-weight: var(--font-weight-bold);
 			}
 			
 			code-element {
 				max-width: 392px;
+				margin-bottom: var(--distance-regular);
 			}
 		`;
 	}

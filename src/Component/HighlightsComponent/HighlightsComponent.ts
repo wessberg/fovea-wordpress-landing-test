@@ -23,7 +23,7 @@ export class HighlightsComponent extends Component implements IHighlightsCompone
 				</card-element>
 		
 				<card-element center>
-						<h4>Natural & Intuitive</h4>
+						<h4>Intuitive</h4>
 						<p>Fovea is built on modern standards such as Custom Elements and declarative data binding through string interpolation. It believes that the DOM is fast as it is with no need to ship an entire virtual DOM implementation on runtime.</p>
 						<div class="flex"></div>
 						<icon-element icon="fovea-intuitive" larger primary></icon-element>

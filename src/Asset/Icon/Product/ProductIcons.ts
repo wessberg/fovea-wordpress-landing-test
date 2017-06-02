@@ -23,3 +23,15 @@ export const FOVEA_LOGO_ICON: IIcon = {
 	viewBox: "0 0 123 197",
 	template: `<g fill-rule="evenodd"><path opacity=".7" d="M61.2 46l60.6 52-60.6 46L0 98"/><path opacity=".8" d="M62 23.3l60.5 52.2-60.6 46-61.4-46"/><path d="M61.2 0l60.6 52-60.6 46L0 52"/><path opacity=".8" d="M0 98l61.2 46v52.2L0 149"/><path d="M121.8 98l-60.6 46v52.2c20.2-16 60.6-47.3 60.6-47.3V98z"/></g>`
 };
+
+export const FOVEA_1_ICON: IIcon = {
+	selector: "fovea-1",
+	viewBox: "0 0 74 74",
+	template: `<path fill-rule="evenodd" d="M37 74C16.6 74 0 57.4 0 37S16.6 0 37 0s37 16.6 37 37-16.6 37-37 37zm2-24V26.5l-8 1v2.2h4.8V50H39z"/>`
+};
+
+export const FOVEA_2_ICON: IIcon = {
+	selector: "fovea-2",
+	viewBox: "0 0 74 74",
+	template: `<path fill-rule="evenodd" d="M37 74C16.6 74 0 57.4 0 37S16.6 0 37 0s37 16.6 37 37-16.6 37-37 37zm8-24v-2.5H34l6.2-6.8c1.3-1.5 2.4-2.8 3.2-4 .7-1.4 1-2.7 1-4 0-2-.5-3.4-1.8-4.7-1.2-1.2-3-1.8-5-1.8-2.5 0-4.4.7-5.8 2-1.4 1.4-2 3-2 5.2h3c0-1.5.4-2.6 1.2-3.5.8-1 2-1.6 3.6-1.6 1 0 2 .4 2.7 1.2.8.7 1 1.7 1 3 0 .8 0 1.7-.6 2.6-.5 1-1.4 2-2.8 3.7l-8 9v2h15z"/>`
+};

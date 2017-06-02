@@ -14,7 +14,19 @@ export class CardComponent extends Component implements ICardComponent {
 		}
 		
 		:host([center]) ::slotted(*) {
-			text-align: center !important;
+			text-align: center;
+		}
+		
+		:host([center]) ::slotted(p),
+		:host([center]) ::slotted(strong),
+		:host([center]) ::slotted(span),
+		::slotted(*) {
+			text-align: justify;
+		}
+		
+		::slotted(button-element) {
+			align-self: flex-end;
+			justify-self: flex-end;
 		}
 		
 		:host {

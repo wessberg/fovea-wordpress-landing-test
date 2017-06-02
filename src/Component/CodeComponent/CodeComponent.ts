@@ -16,20 +16,26 @@ export class CodeComponent extends Component implements ICodeComponent {
 			:host {
 				background: var(--color-dark-hex);
 				border-radius: var(--box-radius);
-				margin: var(--distance-minimum);
+				margin: 0;
 				padding: var(--distance-minimum);
 				width: auto;
 				position: relative;
 				display: flex;
+				contain: content;
 				flex-direction: column;
 				text-align: left;
+			}
+			
+			scroll-element {
+				max-height: inherit;
 			}
 			
 			::slotted(*) {
 				font-family: var(--font-family-monospace) !important;
 				color: var(--color-white-87);
 				user-select: text !important;
-				font-size: var(--font-size-caption) !important;
+				font-size: var(--font-size-mono);
+				line-height: var(--font-size-mono);
 				display: inline;
 			}
 			
@@ -69,10 +75,40 @@ export class CodeComponent extends Component implements ICodeComponent {
 				color: var(--color-syntax-function);
 			}
 			
-			@media screen and (min-width: 400px) {
-				::slotted(*) {
-					font-size: inherit !important;
-				}
+			::slotted(.tagname) {
+				color: var(--color-syntax-tagname);
+			}
+			
+			::slotted(.string) {
+				color: var(--color-syntax-string);
+			}
+			
+			::slotted(.attribute_name) {
+				color: var(--color-syntax-attribute-name);
+			}
+			
+			::slotted(.attribute_value) {
+				color: var(--color-syntax-attribute-value);
+			}
+			
+			::slotted(.css_selector_name) {
+				color: var(--color-syntax-css-selector-name);
+			}
+			
+			::slotted(.css_property_name) {
+				color: var(--color-syntax-css-property-name);
+			}
+			
+			::slotted(.variable) {
+				color: var(--color-syntax-variable);
+			}
+			
+			::slotted(.number) {
+				color: var(--color-syntax-number);
+			}
+			
+			::slotted(.comment) {
+				color: var(--color-syntax-comment);
 			}
 		`;
 	}

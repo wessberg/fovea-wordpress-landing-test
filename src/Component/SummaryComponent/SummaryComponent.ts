@@ -1,6 +1,8 @@
 import {ISummaryComponent} from "./Interface/ISummaryComponent";
 import {Component, selector} from "../Component/Component";
-import "../CodeComponent/CodeComponent";
+import "../DataBindingExampleComponent/DataBindingExampleComponent";
+import "../PrecompileExampleComponent/PrecompileExampleComponent";
+import "../PostcompileExampleComponent/PostcompileExampleComponent";
 
 @selector("summary-element")
 export class SummaryComponent extends Component implements ISummaryComponent {
@@ -8,80 +10,36 @@ export class SummaryComponent extends Component implements ISummaryComponent {
 	public static styles (): string {
 		return `
 			:host {
-				height: var(--height-summary);
-				width: 100%;
-				display: block;
-				position: relative;
 				background: var(--color-primary-100);
-				align-content: center;
-				justify-content: center;
 				text-align: center;
+				width: 100%;
+				justify-content: center;
+				align-content: center;
+				position: relative;
+				display: inline-flex;
+				flex-direction: column;
 				margin: 0;
+				padding: var(--distance-minimum);
 			}
 			
-			h4 {
+			h4, h5 {
 				padding-top: var(--distance-regular);
 				color: var(--color-primary-text-light);
 			}
+			
+			
 		`;
 	}
 
 	public static markup (): string {
+
 		return `
 			<h4>Summary</h4>
-			<code-element><!--
-		 --><pre class="keyword">class</pre><!--
-		 --><pre> </pre><!--
-		 --><pre class="identifier">MyView</pre><!--
-		 --><pre> </pre><!--
-		 --><pre class="keyword">extends</pre><!--
-		 --><pre> </pre><!--
-		 --><pre class="identifier">View</pre><!--
-		 --><pre> </pre><!--
-		 --><pre class="brace">{</pre><!--
-		 --><br><pre>  </pre><!--
-		 --><pre class="decorator">@prop</pre><!--
-		 --><pre> </pre><!--
-		 --><pre class="property">name</pre><!--
-		 --><pre class="token">:</pre><!--
-		 --><pre> </pre><!--
-		 --><pre class="keyword">string</pre><!--
-		 --><pre class="token">;</pre><!--
-		 --><br><pre>  </pre><!--
-		 --><pre class="decorator">@prop</pre><!--
-		 --><pre> </pre><!--
-		 --><pre class="property">media</pre><!--
-		 --><pre class="token">:</pre><!--
-		 --><pre> </pre><!--
-		 --><pre class="type">IMedia</pre><!--
-		 --><pre class="token">;</pre><!--
-		 --><br><pre>  </pre><!--
-		 --><pre class="decorator">@prop</pre><!--
-		 --><pre> </pre><!--
-		 --><pre class="property">numbers</pre><!--
-		 --><pre class="token">:</pre><!--
-		 --><pre> </pre><!--
-		 --><pre class="keyword">number</pre><!--
-		 --><pre class="bracket">[]</pre><!--
-		 --><pre class="token">;</pre><!--
-		 --><br><pre>  </pre><!--
-		 --><pre class="decorator">@prop</pre><!--
-		 --><pre> </pre><!--
-		 --><pre class="property">myFavoriteColor</pre><!--
-		 --><pre class="token">:</pre><!--
-		 --><pre> </pre><!--
-		 --><pre class="keyword">string</pre><!--
-		 --><pre class="token">;</pre><!--
-		 --><br><!--
-		 --><br><pre>  </pre><!--
-		 --><pre class="method">markup</pre><!--
-		 --><pre> </pre><!--
-		 --><pre class="parenthesis">()</pre><!--
-		 --><pre> </pre><!--
-		 --><pre class="brace">{</pre><!--
-		 --><br><pre>  </pre><!--
-		 
-	--></code-element>
+			<data-binding-example-element></data-binding-example-element>
+			<h5>Fovea takes this:</h5>
+			<precompile-example-element></precompile-example-element>
+			<h5>And compiles it into this:</h5>
+			<postcompile-example-element></postcompile-example-element>
 		`;
 	}
 

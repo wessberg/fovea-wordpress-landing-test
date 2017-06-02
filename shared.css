@@ -115,6 +115,15 @@
     --color-syntax-decorator: var(--color-syntax-function);
     --color-syntax-property: #FF5370;
     --color-syntax-type: #e3ba4c;
+    --color-syntax-tagname: var(--color-syntax-property);
+    --color-syntax-string: #aac8ae;
+    --color-syntax-number: var(--color-syntax-property);
+    --color-syntax-attribute-name: #e6b96c;
+    --color-syntax-attribute-value: #c3e887;
+    --color-syntax-css-selector-name: var(--color-syntax-tagname);
+    --color-syntax-css-property-name: #6dc2b8;
+    --color-syntax-variable: #939e88;
+    --color-syntax-comment: #546e7a;
 
     /* Padding/Margin (distance between elements in general) */
 
@@ -163,7 +172,6 @@
     --height-icon-huge: 100px;
     --height-icon-extreme: 150px;
     --height-hero: 515px;
-    --height-summary: 1146px;
 
     /* Rounding */
     --box-radius: 2px;
@@ -203,6 +211,7 @@
     --font-size-subheading: 16px;
     --font-size-button: 14px;
     --font-size-caption: 12px;
+    --font-size-mono: 11px;
     --font-size-title: 20px;
     --font-size-headline: 24px;
     --font-size-display1: 34px;

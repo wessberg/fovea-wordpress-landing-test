@@ -50,10 +50,11 @@ export class ButtonComponent extends Component implements IButtonComponent {
 			padding: 14px;
 			border-radius: var(--box-radius);
 			flex-shrink: 0;
+			transition: background var(--duration-medium) var(--easing-standard-curve);
 		}
 		
 		::slotted(*) {
-			color: var(--color-primary-text-dark) !important;
+			color: var(--color-primary-100) !important;
 			font-size: var(--font-size-button) !important;
 			line-height: var(--font-size-button) !important;
 			font-weight: var(--font-weight-button) !important;
@@ -67,7 +68,7 @@ export class ButtonComponent extends Component implements IButtonComponent {
 		}
 		
 		.ripple {
-			color: var(--color-icon-dark);
+			color: var(--color-primary-100);
 		}
 		
 		:host([primary]) {
@@ -179,7 +180,7 @@ export class ButtonComponent extends Component implements IButtonComponent {
 		}
 		
 		:host(:hover) {
-			background: var(--color-white-87);
+			background: var(--color-black-12);
 		}
 
 		:host[disabled] {
