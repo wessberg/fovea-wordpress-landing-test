@@ -14,7 +14,9 @@ export class HomeHeroComponent extends Component implements IHomeHeroComponent {
 				<icon-element icon="fovea-logo" extreme light></icon-element>
 				<h3>Fovea</h3>
 				<h5>Let's build a better web. For <strong>everyone.</strong></h5>
-				<code-element><code>npm install @wessberg/fovea</code></code-element>
+				<code-element>
+					<pre>npm install @wessberg/fovea</pre>
+				</code-element>
 				<button-element primary shadow>
 					<p>Get started</p>
 				</button-element>
@@ -33,7 +35,7 @@ export class HomeHeroComponent extends Component implements IHomeHeroComponent {
 			}
 			
 			code-element {
-				width: 392px;
+				max-width: 392px;
 			}
 		`;
 	}

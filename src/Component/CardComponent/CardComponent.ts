@@ -10,6 +10,7 @@ export class CardComponent extends Component implements ICardComponent {
 		:host([center]) {
 			align-content: center;
 			justify-content: center;
+			text-align: center;
 		}
 		
 		:host([center]) ::slotted(*) {
@@ -19,7 +20,7 @@ export class CardComponent extends Component implements ICardComponent {
 		:host {
 			max-width: 369px;
 			min-width: 200px;
-			margin: var(--distance-minimum);
+			margin: 0;
 			padding: var(--distance-regular);
 			width: auto;
 			position: relative;

@@ -1,19 +1,11 @@
-import {IScrollComponent, ScrollDirectionKind} from "./Interface/IScrollComponent";
-import {AgentDetector} from "../../Service/AgentDetector/AgentDetector";
-import {EventUtil, IEventUtil} from "@wessberg/eventutil";
+import {IScrollComponent} from "./Interface/IScrollComponent";
 import {Component, selector} from "../Component/Component";
-import {IAgentDetector} from "../../Service/AgentDetector/Interface/IAgentDetector";
-import {IWaitOperations} from "../../Service/WaitOperations/Interface/IWaitOperations";
-import {WaitOperations} from "../../Service/WaitOperations/WaitOperations";
+import {agentDetector, eventUtil, waitOperations} from "../../Service/Services";
 
 @selector("scroll-element")
 export class ScrollComponent extends Component implements IScrollComponent {
-	public role = "list";
 	private static BOUND_BODY_LISTENER: boolean = false;
-	private static readonly agentDetector: IAgentDetector = new AgentDetector();
-	private static readonly eventUtil: IEventUtil = new EventUtil();
-	private static readonly waitOperations: IWaitOperations = new WaitOperations();
-	public direction: ScrollDirectionKind = ScrollDirectionKind.Y;
+	public role = "list";
 	protected lockedPaddingTop: number|null;
 	protected lockedMarginTop: number|null;
 	protected delta: number = 0;
@@ -21,10 +13,55 @@ export class ScrollComponent extends Component implements IScrollComponent {
 	constructor () {
 		super();
 
-		if (ScrollComponent.agentDetector.isIOSDevice && !ScrollComponent.BOUND_BODY_LISTENER) {
+		if (agentDetector.isIOSDevice && !ScrollComponent.BOUND_BODY_LISTENER) {
 			ScrollComponent.BOUND_BODY_LISTENER = true;
-			ScrollComponent.eventUtil.listen(this, "touchmove", document.body, ScrollComponent.onBodyTouchMove, false);
+			eventUtil.listen(this, "touchmove", document.body, ScrollComponent.onBodyTouchMove, false);
 		}
+	}
+
+	public static markup () {
+		return `<slot></slot>`;
+	}
+
+	public static styles () {
+		return `
+
+			:host {
+				transform: translate3d(0,0,0);
+				backface-visibility: hidden;
+				box-sizing: border-box;
+				contain: content;
+				position: relative;
+				display: block;
+				width: 100%;
+			}
+
+			:host,
+			:host([direction="y"]),
+			:host([direction="Y"]) {
+				overflow-y: scroll;
+				overflow-x: hidden;
+			}
+			
+			:host([direction="x"]),
+			:host([direction="X"]) {
+				overflow-y: hidden;
+				overflow-x: scroll;
+			}
+			
+			:host([direction="x"]),
+			:host([direction="X"]) {
+				overflow-y: hidden;
+				overflow-x: scroll;
+			}
+			
+			:host([direction="both"]),
+			:host([direction="both"]) {
+				overflow-y: scroll;
+				overflow-x: scroll;
+				overflow: scroll;
+			}
+		`;
 	}
 
 	protected get _scrollHeight (): number {
@@ -60,7 +97,7 @@ export class ScrollComponent extends Component implements IScrollComponent {
 	public async connectedCallback (): Promise<void> {
 		super.connectedCallback();
 		this.listenForScrollTarget(this);
-		await this.connectScroller(this);
+		await this.connectScroller();
 	}
 
 	public disconnectedCallback (): void {
@@ -68,50 +105,25 @@ export class ScrollComponent extends Component implements IScrollComponent {
 		this.unlistenForScrollTarget(this);
 	}
 
-	private async connectScroller (target: HTMLElement): Promise<void> {
+	private async connectScroller (): Promise<void> {
 
-		// Try to add scrollable CSS classes to the element.
-
-		switch (this.direction) {
-			case ScrollDirectionKind.Y: {
-				target.style.overflowY = "scroll";
-				target.style.overflowX = "hidden";
-				break;
-			}
-			case ScrollDirectionKind.X: {
-				target.style.overflowY = "hidden";
-				target.style.overflowX = "scroll";
-				break;
-			}
-			case ScrollDirectionKind.BOTH: {
-				target.style.overflowY = "scroll";
-				target.style.overflowX = "scroll";
-				target.style.overflow = "scroll";
-
-				break;
-			}
-			default: {
-				throw new ReferenceError(`no ScrollDirectionKind was assigned to the ScrollComponent. Couldn't make it scrollable.`);
-			}
-		}
-
-		if (ScrollComponent.agentDetector.isIOSDevice) {
-			await ScrollComponent.waitOperations.wait(1000);
+		if (agentDetector.isIOSDevice) {
+			await waitOperations.wait(1000);
 			this.style.webkitOverflowScrolling = "touch";
 		}
 	}
 
 	private listenForScrollTarget (target: HTMLElement): void {
-		if (ScrollComponent.agentDetector.isIOSDevice) {
-			ScrollComponent.eventUtil.listen(this, "touchstart", target, this.onScrollTargetTouchstart);
-			ScrollComponent.eventUtil.listen(this, "touchmove", target, this.onScrollTargetTouchmove);
+		if (agentDetector.isIOSDevice) {
+			eventUtil.listen(this, "touchstart", target, this.onScrollTargetTouchstart);
+			eventUtil.listen(this, "touchmove", target, this.onScrollTargetTouchmove);
 		}
 	}
 
 	private unlistenForScrollTarget (target: HTMLElement): void {
-		if (ScrollComponent.agentDetector.isIOSDevice) {
-			ScrollComponent.eventUtil.unlisten(this, "touchstart", target, this.onScrollTargetTouchstart);
-			ScrollComponent.eventUtil.unlisten(this, "touchmove", target, this.onScrollTargetTouchmove);
+		if (agentDetector.isIOSDevice) {
+			eventUtil.unlisten(this, "touchstart", target, this.onScrollTargetTouchstart);
+			eventUtil.unlisten(this, "touchmove", target, this.onScrollTargetTouchmove);
 		}
 	}
 

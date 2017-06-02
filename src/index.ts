@@ -1,7 +1,17 @@
 import {SvgIconUtil} from "./Service/SvgIconUtil/SvgIconUtil";
 import {FOVEA_FAST_ICON, FOVEA_INTUITIVE_ICON, FOVEA_LOGO_ICON, FOVEA_TINY_ICON} from "./Asset/Icon/Product/ProductIcons";
 import {MENU} from "./Asset/Icon/Standard/MaterialIcons";
+import {agentDetector, globalEventBlocker} from "./Service/Services";
+
+// Set up icons
 SvgIconUtil.addIcons([MENU, FOVEA_TINY_ICON, FOVEA_FAST_ICON, FOVEA_INTUITIVE_ICON, FOVEA_LOGO_ICON]);
+
+// Block undesirable global events
+globalEventBlocker.block("dragstart");
+if (agentDetector.isMobile) globalEventBlocker.block("contextmenu");
+
+// Exports
+export {SummaryComponent} from "./Component/SummaryComponent/SummaryComponent";
 export {HeroComponent} from "./Component/HeroComponent/HeroComponent";
 export {HomeHeroComponent} from "./Component/HomeHeroComponent/HomeHeroComponent";
 export {HomeFrame} from "./Frame/HomeFrame/HomeFrame";

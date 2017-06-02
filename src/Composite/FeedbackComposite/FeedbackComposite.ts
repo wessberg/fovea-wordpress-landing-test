@@ -1,12 +1,6 @@
-
-
 import {Component, selector} from "../../Component/Component/Component";
 import {ICoordinates, IFeedbackComposite} from "./Interface/IFeedbackComposite";
-import {IWaitOperations} from "../../Service/WaitOperations/Interface/IWaitOperations";
-import {WaitOperations} from "../../Service/WaitOperations/WaitOperations";
-import {IEventUtil, EventUtil} from "@wessberg/eventutil";
-import {IAnimationOperations} from "../../Service/AnimationOperations/Interface/IAnimationOperations";
-import {AnimationOperations} from "../../Service/AnimationOperations/AnimationOperations";
+import {eventUtil, waitOperations} from "../../Service/Services";
 
 @selector("feedback-composite")
 export class FeedbackComposite extends Component implements IFeedbackComposite {
@@ -16,39 +10,26 @@ export class FeedbackComposite extends Component implements IFeedbackComposite {
 	target: HTMLElement;
 	initialWaitTime: number = 0.2;
 	oneShotAnimationDuration: number = 0.5;
-	lastCoordinates: ICoordinates | null = null;
-	protected static readonly waitOperations: IWaitOperations = new WaitOperations();
-	protected static readonly eventUtil: IEventUtil = new EventUtil();
-	protected static readonly animationOperations: IAnimationOperations = new AnimationOperations();
+	lastCoordinates: ICoordinates|null = null;
 
 	static get observedAttributes () {
 		return ["pointer-down"];
 	}
 
 	public listenForTarget (target: Element): void {
-		FeedbackComposite.eventUtil.listen(this, "click", target, this.onPointerTap);
-		FeedbackComposite.eventUtil.listen(this, "pointerdown", target, this.onPointerDown);
-		FeedbackComposite.eventUtil.listen(this, "pointerup", target, this.onPointerUp);
-		FeedbackComposite.eventUtil.listen(this, "pointercancel", target, this.onPointerCancel);
-		FeedbackComposite.eventUtil.listen(this, "pointerleave", target, this.onPointerLeave);
+		eventUtil.listen(this, "click", target, this.onPointerTap);
+		eventUtil.listen(this, "pointerdown", target, this.onPointerDown);
+		eventUtil.listen(this, "pointerup", target, this.onPointerUp);
+		eventUtil.listen(this, "pointercancel", target, this.onPointerCancel);
+		eventUtil.listen(this, "pointerleave", target, this.onPointerLeave);
 	}
 
 	public unlistenFromTarget (target: Element): void {
-		FeedbackComposite.eventUtil.unlisten(this, "click", target, this.onPointerTap);
-		FeedbackComposite.eventUtil.unlisten(this, "pointerdown", target, this.onPointerDown);
-		FeedbackComposite.eventUtil.unlisten(this, "pointerup", target, this.onPointerUp);
-		FeedbackComposite.eventUtil.unlisten(this, "pointercancel", target, this.onPointerCancel);
-		FeedbackComposite.eventUtil.unlisten(this, "pointerleave", target, this.onPointerLeave);
-	}
-
-	private async onPointerDownChanged (pointerDown: boolean): Promise<void> {
-		if (pointerDown) {
-			await FeedbackComposite.waitOperations.wait(this.initialWaitTime * 1000);
-			if (this.pointerDown && !this.oneShotAnimating) {
-				this.complexAnimating = true;
-				this.setAttribute("complex-animating", "");
-			}
-		}
+		eventUtil.unlisten(this, "click", target, this.onPointerTap);
+		eventUtil.unlisten(this, "pointerdown", target, this.onPointerDown);
+		eventUtil.unlisten(this, "pointerup", target, this.onPointerUp);
+		eventUtil.unlisten(this, "pointercancel", target, this.onPointerCancel);
+		eventUtil.unlisten(this, "pointerleave", target, this.onPointerLeave);
 	}
 
 	public async onPointerDown ({offsetX, offsetY, width, height}: PointerEvent): Promise<void> {
@@ -100,5 +81,15 @@ export class FeedbackComposite extends Component implements IFeedbackComposite {
 				return await this.onPointerDownChanged(this.pointerDown);
 		}
 
+	}
+
+	private async onPointerDownChanged (pointerDown: boolean): Promise<void> {
+		if (pointerDown) {
+			await waitOperations.wait(this.initialWaitTime * 1000);
+			if (this.pointerDown && !this.oneShotAnimating) {
+				this.complexAnimating = true;
+				this.setAttribute("complex-animating", "");
+			}
+		}
 	}
 }

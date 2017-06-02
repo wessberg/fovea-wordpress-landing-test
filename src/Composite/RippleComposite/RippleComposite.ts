@@ -1,6 +1,7 @@
 import {FeedbackComposite} from "../FeedbackComposite/FeedbackComposite";
 import {IRippleComposite} from "./Interface/IRippleComposite";
 import {selector} from "../../Component/Component/Component";
+import {animationOperations, waitOperations} from "../../Service/Services";
 
 @selector("ripple-composite")
 export class RippleComposite extends FeedbackComposite implements IRippleComposite {
@@ -17,7 +18,6 @@ export class RippleComposite extends FeedbackComposite implements IRippleComposi
 	public highlightDuration: number = 0.7;
 	public rippleDuration: number = 5;
 	private lastRipple: HTMLDivElement|null;
-	private highlightElement: HTMLElement;
 
 	static get observedAttributes () {
 		return ["light", "one-shot-animating", "complex-animating", "pointer-down"];
@@ -73,13 +73,13 @@ export class RippleComposite extends FeedbackComposite implements IRippleComposi
 		if (ripple == null) return;
 
 		await Promise.all<Animation|void>([
-			RippleComposite.animationOperations.animate(ripple, {
+			animationOperations.animate(ripple, {
 				opacity: [this.rippleHighlightAmount, 0],
 				transform: ["scale(0) translateZ(0)", "scale(1) translateZ(0)"]
 			}, {duration: this.oneShotAnimationDuration * 1000, easing: this.rippleEasing}),
 
-			this.highlightElement == null ? Promise.resolve() :
-				RippleComposite.animationOperations.animate(this.highlightElement, {opacity: [0, this.highlightAmount, 0]}, {
+			this.element("highlight") == null ? Promise.resolve() :
+				animationOperations.animate(this.element("highlight"), {opacity: [0, this.highlightAmount, 0]}, {
 					duration: this.oneShotAnimationDuration * 1000,
 					easing: this.rippleEasing
 				})]);
@@ -126,7 +126,6 @@ export class RippleComposite extends FeedbackComposite implements IRippleComposi
 
 	protected connectedCallback (): void {
 		super.connectedCallback();
-		this.highlightElement = <HTMLElement> (this.shadowRoot == null ? document.getElementById("highlight") : this.shadowRoot.getElementById("highlight"));
 
 		if (this.target != null) {
 			this.prepareTarget(this.target);
@@ -192,7 +191,7 @@ export class RippleComposite extends FeedbackComposite implements IRippleComposi
 
 	private async whenAllRipplesHasFinishedAnimating (): Promise<void> {
 		if (this.lastRipple == null) return;
-		else await RippleComposite.waitOperations.wait(100);
+		else await waitOperations.wait(100);
 		return await this.whenAllRipplesHasFinishedAnimating();
 	}
 
@@ -209,12 +208,12 @@ export class RippleComposite extends FeedbackComposite implements IRippleComposi
 		this.shadowRoot == null ? this.appendChild(ripple) : this.shadowRoot.appendChild(ripple);
 		this.lastRipple = ripple;
 
-		await RippleComposite.waitOperations.wait(RippleComposite.ANIMATION_FRAME_DELAY);
+		await waitOperations.wait(RippleComposite.ANIMATION_FRAME_DELAY);
 		return ripple;
 	}
 
 	private async animateHighlightIn (): Promise<void> {
-		await RippleComposite.animationOperations.animate(this.highlightElement, {opacity: [0, this.highlightAmount]}, {
+		await animationOperations.animate(this.element("highlight"), {opacity: [0, this.highlightAmount]}, {
 			duration: this.highlightDuration * 1000,
 			easing: this.rippleEasing,
 			fill: "forwards"
@@ -222,10 +221,10 @@ export class RippleComposite extends FeedbackComposite implements IRippleComposi
 	}
 
 	private async animateHighlightOut (): Promise<void> {
-		let opacity: string|number|null = window.getComputedStyle(this.highlightElement).opacity;
+		let opacity: string|number|null = window.getComputedStyle(this.element("highlight")).opacity;
 		if (opacity == null) opacity = this.highlightAmount;
 
-		await RippleComposite.animationOperations.animate(this.highlightElement, {opacity: [opacity, 0]}, {
+		await animationOperations.animate(this.element("highlight"), {opacity: [opacity, 0]}, {
 			duration: this.oneShotAnimationDuration * 1000,
 			easing: this.rippleEasing,
 			fill: "forwards"
@@ -241,7 +240,7 @@ export class RippleComposite extends FeedbackComposite implements IRippleComposi
 		const ripple = await this.createAndAddRipple();
 		if (ripple == null) return;
 
-		await RippleComposite.animationOperations.animate(ripple, {
+		await animationOperations.animate(ripple, {
 			opacity: [this.rippleHighlightAmount, 0],
 			transform: ["scale(0) translateZ(0)", "scale(1) translateZ(0)"]
 		}, {duration: this.rippleDuration * 1000, easing: this.rippleEasing});
@@ -257,7 +256,7 @@ export class RippleComposite extends FeedbackComposite implements IRippleComposi
 		const transform = style.transform == null ? "scale(0) translateZ(0)" : style.transform;
 
 		await Promise.all([
-			RippleComposite.animationOperations.animate(this.lastRipple, {
+			animationOperations.animate(this.lastRipple, {
 				opacity: [opacity, 0],
 				transform: [transform, "scale(1) translateZ(0)"]
 			}, {duration: this.oneShotAnimationDuration * 1000, easing: this.rippleEasing}),

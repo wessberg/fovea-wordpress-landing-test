@@ -1,5 +1,6 @@
 import "../../Component/HighlightsComponent/HighlightsComponent";
 import "../../Component/HomeHeroComponent/HomeHeroComponent";
+import "../../Component/SummaryComponent/SummaryComponent";
 
 import {Page} from "../Page/Page";
 import {IHomePage} from "./Interface/IHomePage";
@@ -12,14 +13,22 @@ export class HomePage extends Page implements IHomePage {
 		return `
 			<home-hero-element></home-hero-element>
 			<highlights-element></highlights-element>
+			<summary-element></summary-element>
 		`;
 	}
 
 	public static styles () {
 		return super.styles() + `
 			highlights-element {
-				position: absolute;
-				top: calc(var(--height-hero) - 40px);
+				transform: translate3d(0, -40px, 0);
+			}
+			
+			#highlights-spacer {
+				display: block;
+				position: relative;
+				border: 1px solid red;
+				width: 100%;
+				height: 200px;
 			}
 		`;
 	}

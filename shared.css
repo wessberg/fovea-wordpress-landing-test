@@ -104,6 +104,18 @@
     --color-menu-light: var(--color-white-87);
     --color-button-light: var(--color-white-87);
 
+    --color-syntax-keyword: #FFA000;
+    --color-syntax-function: #82B1FF;
+    --color-syntax-method: var(--color-syntax-function);
+    --color-syntax-identifier: #FFCB6B;
+    --color-syntax-brace: #989fa7;
+    --color-syntax-bracket: var(--color-white-87);
+    --color-syntax-parenthesis: var(--color-syntax-bracket);
+    --color-syntax-token: var(--color-syntax-bracket);
+    --color-syntax-decorator: var(--color-syntax-function);
+    --color-syntax-property: #FF5370;
+    --color-syntax-type: #e3ba4c;
+
     /* Padding/Margin (distance between elements in general) */
 
     --distance-minimum: 16px;
@@ -151,6 +163,7 @@
     --height-icon-huge: 100px;
     --height-icon-extreme: 150px;
     --height-hero: 515px;
+    --height-summary: 1146px;
 
     /* Rounding */
     --box-radius: 2px;
@@ -232,6 +245,7 @@ small,
 span,
 td,
 tr,
+pre,
 tbody {
     font-family: var(--font-family);
     user-select: none;
@@ -239,7 +253,7 @@ tbody {
     text-rendering: var(--font-rendering);
 }
 
-p, option, label, small, span, td {
+p, option, label, small, span, td, pre {
     margin: 0;
 }
 
@@ -247,7 +261,7 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0 0 20px 0;
 }
 
-small, p, option, label, span, td {
+small, p, option, label, span, td, pre {
     font-size: var(--font-size-body);
     line-height: var(--line-height-body);
 }

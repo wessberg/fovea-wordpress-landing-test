@@ -33,23 +33,52 @@ export class HighlightsComponent extends Component implements IHighlightsCompone
 
 	public static styles (): string {
 		return `
+
 			:host {
 				width: 100%;
 				justify-content: center;
+				align-content: center;
+				position: relative;
 				display: inline-flex;
+				flex-direction: column;
+				margin: 0;
 			}
 			
-			:host > card-element > p,
-			:host > card-element > h4 {
+			card-element > p,
+			card-element > h4 {
 				user-select: text;
 			}
 			
-			:host > card-element > icon-element {
-				margin-top: var(--distance-regular);
+			card-element {
+				margin: var(--distance-minimum) auto;
 			}
 			
 			.flex {
-			flex-grow: 1;
+				flex-grow: 1;
+			}
+			
+			@media screen and (min-width: 700px) {
+				:host {
+					flex-direction: row;
+				}
+				
+				card-element {
+					margin: var(--distance-minimum);
+				}
+			
+				card-element:first-of-type {
+					margin-left: var(--distance-minimum);
+					margin-right: calc(var(--distance-minimum) / 2);
+				}
+			
+				card-element:last-of-type {
+					margin-right: var(--distance-minimum);
+					margin-left: calc(var(--distance-minimum) / 2);
+				}
+			
+				card-element > icon-element {
+					margin-top: var(--distance-regular);
+				}
 			}
 		`;
 	}

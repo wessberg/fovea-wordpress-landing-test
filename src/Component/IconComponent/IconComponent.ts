@@ -1,12 +1,10 @@
 import {Component, selector} from "../Component/Component";
 import {IIconComponent} from "./IIconComponent";
-import {ISvgIconUtil} from "../../Service/SvgIconUtil/Interface/ISvgIconUtil";
-import {SvgIconUtil} from "../../Service/SvgIconUtil/SvgIconUtil";
 import {IIcon} from "../../Asset/Icon/Interface/IIcon";
+import {svgIconUtil} from "../../Service/Services";
 
 @selector("icon-element")
 export class IconComponent extends Component implements IIconComponent {
-	private static readonly svgIconUtil: ISvgIconUtil = new SvgIconUtil();
 	public icon: IIcon|null;
 	public svg: SVGElement|null;
 
@@ -105,7 +103,7 @@ export class IconComponent extends Component implements IIconComponent {
 
 			case "icon":
 				if (newVal != null) {
-					const svg = IconComponent.svgIconUtil.buildIconFromName(newVal);
+					const svg = svgIconUtil.buildIconFromName(newVal);
 					if (svg == null) throw ReferenceError(`Failed to build an SVG for icon: ${newVal}`);
 					this.svg = svg;
 					this.setSvg(svg);

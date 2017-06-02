@@ -1,12 +1,11 @@
 import {Component, selector} from "../../Component/Component/Component";
 import {IComposite} from "../Composite/Interface/IComposite";
-import {IEventUtil, EventUtil} from "@wessberg/eventutil";
 import {KeyboardButtonKind} from "../../Service/KeyboardOperations/KeyboardButtonKind";
+import {eventUtil} from "../../Service/Services";
 
 @selector("focusable-composite")
 export class FocusableComposite extends Component implements IComposite {
 	private static readonly POINTER_INITIATED_DELAY = 1000;
-	private static eventUtil: IEventUtil = new EventUtil();
 	public target: HTMLElement;
 	public actionTarget: HTMLElement|null;
 	private lastFiredPointerDownEvent: PointerEvent|null;
@@ -22,17 +21,17 @@ export class FocusableComposite extends Component implements IComposite {
 	}
 
 	public listenForTarget (target: Element): void {
-		FocusableComposite.eventUtil.listen(this, "pointerdown", target, this.onTargetPointerDown);
-		FocusableComposite.eventUtil.listen(this, "keydown", target, this.onTargetKeyDown, false);
-		FocusableComposite.eventUtil.listen(this, "focus", target, this.onTargetGotFocus);
-		FocusableComposite.eventUtil.listen(this, "blur", target, this.onTargetLostFocus);
+		eventUtil.listen(this, "pointerdown", target, this.onTargetPointerDown);
+		eventUtil.listen(this, "keydown", target, this.onTargetKeyDown, false);
+		eventUtil.listen(this, "focus", target, this.onTargetGotFocus);
+		eventUtil.listen(this, "blur", target, this.onTargetLostFocus);
 	}
 
 	public unlistenFromTarget (target: Element): void {
-		FocusableComposite.eventUtil.unlisten(this, "pointerdown", target, this.onTargetPointerDown);
-		FocusableComposite.eventUtil.unlisten(this, "keydown", target, this.onTargetKeyDown);
-		FocusableComposite.eventUtil.unlisten(this, "focus", target, this.onTargetGotFocus);
-		FocusableComposite.eventUtil.unlisten(this, "blur", target, this.onTargetLostFocus);
+		eventUtil.unlisten(this, "pointerdown", target, this.onTargetPointerDown);
+		eventUtil.unlisten(this, "keydown", target, this.onTargetKeyDown);
+		eventUtil.unlisten(this, "focus", target, this.onTargetGotFocus);
+		eventUtil.unlisten(this, "blur", target, this.onTargetLostFocus);
 	}
 
 	protected connectedCallback (): void {
