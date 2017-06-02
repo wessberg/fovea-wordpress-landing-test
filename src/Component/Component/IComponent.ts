@@ -1,4 +1,6 @@
 export interface IComponent extends HTMLElement {
+	role: string;
+	tabindex: string;
 }
 
 export interface IComponentConstructor {

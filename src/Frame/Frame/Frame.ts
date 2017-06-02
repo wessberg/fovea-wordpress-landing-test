@@ -1,4 +1,4 @@
-import {Component, selector} from "../../component/Component/Component";
+import {Component, selector} from "../../Component/Component/Component";
 import {IFrame} from "./Interface/IFrame";
 
 @selector("frame-element")

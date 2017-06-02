@@ -1,6 +1,7 @@
 import "../IconComponent/IconComponent";
 import "../CodeComponent/CodeComponent";
 import "../HeroComponent/HeroComponent";
+import "../ButtonComponent/ButtonComponent";
 import {IHomeHeroComponent} from "./Interface/IHomeHeroComponent";
 import {Component, selector} from "../Component/Component";
 
@@ -14,6 +15,9 @@ export class HomeHeroComponent extends Component implements IHomeHeroComponent {
 				<h3>Fovea</h3>
 				<h5>Let's build a better web. For <strong>everyone.</strong></h5>
 				<code-element><code>npm install @wessberg/fovea</code></code-element>
+				<button-element primary shadow>
+					<p>Get started</p>
+				</button-element>
 			</hero-element>
 		`;
 	}

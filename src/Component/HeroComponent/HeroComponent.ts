@@ -3,6 +3,7 @@ import {Component, selector} from "../Component/Component";
 
 @selector("hero-element")
 export class HeroComponent extends Component implements IHeroComponent {
+	public tabindex: string = "0";
 
 	public static styles (): string {
 		return `

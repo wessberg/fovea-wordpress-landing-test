@@ -1,9 +1,9 @@
-import "../../component/HighlightsComponent/HighlightsComponent";
-import "../../component/HomeHeroComponent/HomeHeroComponent";
+import "../../Component/HighlightsComponent/HighlightsComponent";
+import "../../Component/HomeHeroComponent/HomeHeroComponent";
 
 import {Page} from "../Page/Page";
 import {IHomePage} from "./Interface/IHomePage";
-import {selector} from "../../component/Component/Component";
+import {selector} from "../../Component/Component/Component";
 
 @selector("home-page-element")
 export class HomePage extends Page implements IHomePage {

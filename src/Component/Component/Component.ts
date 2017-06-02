@@ -24,6 +24,8 @@ export function selector (selector: string) {
 
 @selector("component-element")
 export class Component extends HTMLElement implements IComponent {
+	public role: string = "presentation";
+	public tabindex: string = "-1";
 	public static template: HTMLTemplateElement|null = null;
 
 	constructor () {
@@ -50,6 +52,8 @@ export class Component extends HTMLElement implements IComponent {
 	}
 
 	protected connectedCallback () {
+		this.setAttribute("role", this.role);
+		this.setAttribute("tabindex", this.tabindex);
 	}
 
 	protected disconnectedCallback () {

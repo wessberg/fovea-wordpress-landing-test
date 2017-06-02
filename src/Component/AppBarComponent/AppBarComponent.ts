@@ -3,6 +3,7 @@ import {IAppBarComponent} from "./Interface/IAppBarComponent";
 
 @selector("app-bar-element")
 export class AppBarComponent extends Component implements IAppBarComponent {
+	public role = "navigation";
 
 	public static styles (): string {
 		return `

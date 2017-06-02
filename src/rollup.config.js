@@ -36,7 +36,7 @@ export default {
 	format: "iife",
 	sourceMap: false,
 	plugins: [
-		typescriptPlugin({clean: true}),
+		typescriptPlugin({clean: true, abortOnError: false}),
 		nodeResolve({
 			// use "module" field for ES6 module if possible
 			module: true, // Default: true

@@ -35,3 +35,7 @@ declare interface Window {
 	ActiveXObject?: string;
 	cordova: any;
 }
+
+declare interface Node {
+	getRootNode (): ShadowRoot;
+}

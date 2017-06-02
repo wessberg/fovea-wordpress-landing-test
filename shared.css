@@ -1,15 +1,3 @@
-/*
-Theme Name: Fovea
-Author: Frederik Wessberg
-Author URI: https://github.com/wessberg
-Version: 1.0
-Text Domain: fovea
-License: MIT
-License URI: https://opensource.org/licenses/MIT
-Description: A theme for the Fovea landing page.
-Template: Fovea
-*/
-
 :root,
 :host {
 
@@ -18,8 +6,11 @@ Template: Fovea
     --_rgb-inner-black: 0, 0, 0;
     --_rgb-inner-white: 255, 255, 255;
     --_rgb-inner-primary: 86, 207, 119;
+    --_rgb-inner-primary-darker: 79, 193, 110;
     --_rgb-inner-accent: 254, 192, 7;
+    --_rgb-inner-accent-darker: 226, 171, 7;
     --_rgb-inner-red: 221, 44, 0;
+    --_rgb-inner-red-darker: 198, 40, 1;
 
     /* -- Public colors -- */
     --color-background: #F5F5F5;
@@ -43,6 +34,7 @@ Template: Fovea
     --color-white-26: rgba(var(--_rgb-inner-white), 0.26);
     --color-white-12: rgba(var(--_rgb-inner-white), 0.12);
 
+    --color-primary-120: rgb(var(--_rgb-inner-primary-darker));
     --color-primary-100: rgb(var(--_rgb-inner-primary));
     --color-primary-87: rgba(var(--_rgb-inner-primary), 0.87);
     --color-primary-70: rgba(var(--_rgb-inner-primary), 0.70);
@@ -52,6 +44,7 @@ Template: Fovea
     --color-primary-26: rgba(var(--_rgb-inner-primary), 0.26);
     --color-primary-12: rgba(var(--_rgb-inner-primary), 0.12);
 
+    --color-accent-120: rgb(var(--_rgb-inner-accent-darker));
     --color-accent-100: rgb(var(--_rgb-inner-accent));
     --color-accent-87: rgba(var(--_rgb-inner-accent), 0.87);
     --color-accent-70: rgba(var(--_rgb-inner-accent), 0.70);
@@ -61,6 +54,7 @@ Template: Fovea
     --color-accent-26: rgba(var(--_rgb-inner-accent), 0.26);
     --color-accent-12: rgba(var(--_rgb-inner-accent), 0.12);
 
+    --color-red-120: rgb(var(--_rgb-inner-red-darker));
     --color-red-100: rgb(var(--_rgb-inner-red));
     --color-red-87: rgba(var(--_rgb-inner-red), 0.87);
     --color-red-70: rgba(var(--_rgb-inner-red), 0.70);

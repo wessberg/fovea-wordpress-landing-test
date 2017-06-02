@@ -1,13 +1,14 @@
 import {IScrollComponent, ScrollDirectionKind} from "./Interface/IScrollComponent";
-import {AgentDetector} from "../../service/AgentDetector/AgentDetector";
+import {AgentDetector} from "../../Service/AgentDetector/AgentDetector";
 import {EventUtil, IEventUtil} from "@wessberg/eventutil";
 import {Component, selector} from "../Component/Component";
-import {IAgentDetector} from "../../service/AgentDetector/Interface/IAgentDetector";
-import {IWaitOperations} from "../../service/WaitOperations/Interface/IWaitOperations";
-import {WaitOperations} from "../../service/WaitOperations/WaitOperations";
+import {IAgentDetector} from "../../Service/AgentDetector/Interface/IAgentDetector";
+import {IWaitOperations} from "../../Service/WaitOperations/Interface/IWaitOperations";
+import {WaitOperations} from "../../Service/WaitOperations/WaitOperations";
 
 @selector("scroll-element")
 export class ScrollComponent extends Component implements IScrollComponent {
+	public role = "list";
 	private static BOUND_BODY_LISTENER: boolean = false;
 	private static readonly agentDetector: IAgentDetector = new AgentDetector();
 	private static readonly eventUtil: IEventUtil = new EventUtil();

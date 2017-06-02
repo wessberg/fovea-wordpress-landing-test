@@ -1,8 +1,8 @@
 import {Component, selector} from "../Component/Component";
 import {IIconComponent} from "./IIconComponent";
-import {ISvgIconUtil} from "../../service/SvgIconUtil/Interface/ISvgIconUtil";
-import {SvgIconUtil} from "../../service/SvgIconUtil/SvgIconUtil";
-import {IIcon} from "../../asset/Icon/Interface/IIcon";
+import {ISvgIconUtil} from "../../Service/SvgIconUtil/Interface/ISvgIconUtil";
+import {SvgIconUtil} from "../../Service/SvgIconUtil/SvgIconUtil";
+import {IIcon} from "../../Asset/Icon/Interface/IIcon";
 
 @selector("icon-element")
 export class IconComponent extends Component implements IIconComponent {

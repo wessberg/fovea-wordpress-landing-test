@@ -1,4 +1,4 @@
-import {IComponent} from "../../../component/Component/IComponent";
+import {IComponent} from "../../../Component/Component/IComponent";
 
 export interface IFrame extends IComponent {
 

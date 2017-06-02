@@ -1,9 +1,9 @@
-import "../../component/AppBarComponent/AppBarComponent";
+import "../../Component/AppBarComponent/AppBarComponent";
 import "../../Page/HomePage/HomePage";
-import "../../component/IconComponent/IconComponent";
+import "../../Component/IconComponent/IconComponent";
 import {Frame} from "../Frame/Frame";
 import {IHomeFrame} from "./Interface/IHomeFrame";
-import {selector} from "../../component/Component/Component";
+import {selector} from "../../Component/Component/Component";
 
 @selector("home-frame-element")
 export class HomeFrame extends Frame implements IHomeFrame {

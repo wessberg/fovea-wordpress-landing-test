@@ -1,5 +1,5 @@
 import {ISvgIconUtil} from "./Interface/ISvgIconUtil";
-import {IIcon} from "../../asset/Icon/Interface/IIcon";
+import {IIcon} from "../../Asset/Icon/Interface/IIcon";
 
 export class SvgIconUtil implements ISvgIconUtil {
 	private static readonly seenIcons: Map<string, IIcon> = new Map();
