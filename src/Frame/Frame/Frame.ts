@@ -1,6 +1,7 @@
-import {Component} from "../../component/Component/Component";
+import {Component, selector} from "../../component/Component/Component";
 import {IFrame} from "./Interface/IFrame";
 
+@selector("frame-element")
 export class Frame extends Component implements IFrame {
 	public static styles (): string {
 		return `
@@ -18,5 +19,3 @@ export class Frame extends Component implements IFrame {
 	}
 
 }
-
-Frame.define("frame-element");

@@ -1,6 +1,8 @@
 import {IPage} from "./Interface/IPage";
 import {ScrollComponent} from "../../component/ScrollComponent/ScrollComponent";
+import {selector} from "../../component/Component/Component";
 
+@selector("page-element")
 export class Page extends ScrollComponent implements IPage {
 	public static styles (): string {
 		return `
@@ -18,5 +20,3 @@ export class Page extends ScrollComponent implements IPage {
 		`;
 	}
 }
-
-Page.define("page-element");

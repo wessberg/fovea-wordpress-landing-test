@@ -1,5 +1,33 @@
 import typescriptPlugin from "rollup-plugin-typescript2";
 import nodeResolve from "rollup-plugin-node-resolve";
+import babili from "rollup-plugin-babili";
+import gzip from "rollup-plugin-gzip";
+import {Config} from "@wessberg/environment";
+
+const PRODUCTION_PLUGINS = Config.PRODUCTION ? [
+	babili({
+		comments: false,
+		evaluate: true,
+		deadcode: true,
+		infinity: true,
+		mangle: true,
+		numericLiterals: true,
+		replace: true,
+		simplify: true,
+		mergeVars: true,
+		booleans: true,
+		regexpConstructors: true,
+		removeConsole: true,
+		removeDebugger: true,
+		removeUndefined: true,
+		undefinedToVoid: true
+	}),
+	gzip({
+		options: {
+			level: 9
+		}
+	})
+] : [];
 
 export default {
 	entry: "index.ts",
@@ -22,6 +50,7 @@ export default {
 			// – see https://github.com/rollup/rollup-plugin-commonjs
 			main: true,  // Default: true
 		}),
+		...PRODUCTION_PLUGINS
 	],
 	treeshake: true
 };

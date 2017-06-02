@@ -1,6 +1,7 @@
 import {ICardComponent} from "./ICardComponent";
-import {Component} from "../Component/Component";
+import {Component, selector} from "../Component/Component";
 
+@selector("card-element")
 export class CardComponent extends Component implements ICardComponent {
 
 	public static styles (): string {
@@ -27,6 +28,7 @@ export class CardComponent extends Component implements ICardComponent {
 			background: var(--color-white-100);
 			box-shadow: var(--shadow-level4);
 			contain: content;
+			border-radius: var(--box-radius);
 		}
 		
 		:host([shadow="1"]) {
@@ -66,5 +68,3 @@ export class CardComponent extends Component implements ICardComponent {
 		`;
 	}
 }
-
-CardComponent.define("card-element");

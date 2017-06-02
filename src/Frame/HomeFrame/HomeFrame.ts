@@ -2,9 +2,10 @@ import "../../component/AppBarComponent/AppBarComponent";
 import "../../Page/HomePage/HomePage";
 import "../../component/IconComponent/IconComponent";
 import {Frame} from "../Frame/Frame";
-
 import {IHomeFrame} from "./Interface/IHomeFrame";
+import {selector} from "../../component/Component/Component";
 
+@selector("home-frame-element")
 export class HomeFrame extends Frame implements IHomeFrame {
 	public static markup (): string {
 		return `
@@ -24,5 +25,3 @@ export class HomeFrame extends Frame implements IHomeFrame {
 		`;
 	}
 }
-
-HomeFrame.define("home-frame-element");

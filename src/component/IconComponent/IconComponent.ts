@@ -1,9 +1,10 @@
-import {Component} from "../Component/Component";
+import {Component, selector} from "../Component/Component";
 import {IIconComponent} from "./IIconComponent";
 import {ISvgIconUtil} from "../../service/SvgIconUtil/Interface/ISvgIconUtil";
 import {SvgIconUtil} from "../../service/SvgIconUtil/SvgIconUtil";
 import {IIcon} from "../../asset/Icon/Interface/IIcon";
 
+@selector("icon-element")
 export class IconComponent extends Component implements IIconComponent {
 	private static readonly svgIconUtil: ISvgIconUtil = new SvgIconUtil();
 	public icon: IIcon|null;
@@ -15,8 +16,9 @@ export class IconComponent extends Component implements IIconComponent {
 
 	public static styles (): string {
 		return `
-			:host-context([center]) {
-				margin: auto;
+			:host-context([center]),
+			:host([center]) {
+				margin: 0 auto;
 			}
 			
 			#fill_target,
@@ -81,9 +83,19 @@ export class IconComponent extends Component implements IIconComponent {
 				height: var(--height-icon-large);
 			}
 			
-			:host([largest]) {
-				width: var(--width-icon-largest);
-				height: var(--height-icon-largest);
+			:host([larger]) {
+				width: var(--width-icon-larger);
+				height: var(--height-icon-larger);
+			}
+			
+			:host([huge]) {
+				width: var(--width-icon-huge);
+				height: var(--height-icon-huge);
+			}
+			
+			:host([extreme]) {
+				width: var(--width-icon-extreme);
+				height: var(--height-icon-extreme);
 			}
 		`;
 	}
@@ -118,5 +130,3 @@ export class IconComponent extends Component implements IIconComponent {
 	}
 
 }
-
-IconComponent.define("icon-element");

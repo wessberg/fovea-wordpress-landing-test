@@ -1,6 +1,7 @@
-import {Component} from "../Component/Component";
+import {Component, selector} from "../Component/Component";
 import {IAppBarComponent} from "./Interface/IAppBarComponent";
 
+@selector("app-bar-element")
 export class AppBarComponent extends Component implements IAppBarComponent {
 
 	public static styles (): string {
@@ -66,5 +67,3 @@ export class AppBarComponent extends Component implements IAppBarComponent {
 		`;
 	}
 }
-
-AppBarComponent.define("app-bar-element");

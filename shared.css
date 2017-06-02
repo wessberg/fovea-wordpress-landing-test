@@ -18,12 +18,13 @@ Template: Fovea
     --_rgb-inner-black: 0, 0, 0;
     --_rgb-inner-white: 255, 255, 255;
     --_rgb-inner-primary: 86, 207, 119;
-    --_rgb-inner-accent: 255, 152, 0;
+    --_rgb-inner-accent: 254, 192, 7;
     --_rgb-inner-red: 221, 44, 0;
 
     /* -- Public colors -- */
     --color-background: #F5F5F5;
     --color-primary-hex: #4caf50;
+    --color-dark-hex: #424242;
     --color-black-100: rgb(var(--_rgb-inner-black));
     --color-black-87: rgba(var(--_rgb-inner-black), 0.87);
     --color-black-70: rgba(var(--_rgb-inner-black), 0.70);
@@ -140,7 +141,9 @@ Template: Fovea
     --width-icon-small: 24px;
     --width-icon-medium: 30px;
     --width-icon-large: 40px;
-    --width-icon-largest: 61px;
+    --width-icon-larger: 61px;
+    --width-icon-huge: 100px;
+    --width-icon-extreme: 150px;
 
     /* Height */
     --app-bar-landscape-height-mobile: 48px;
@@ -150,7 +153,10 @@ Template: Fovea
     --height-icon-small: 24px;
     --height-icon-medium: 30px;
     --height-icon-large: 40px;
-    --height-icon-largest: 61px;
+    --height-icon-larger: 61px;
+    --height-icon-huge: 100px;
+    --height-icon-extreme: 150px;
+    --height-hero: 515px;
 
     /* Rounding */
     --box-radius: 2px;
@@ -169,6 +175,7 @@ Template: Fovea
 
     /* Fonts */
     --font-family: "Roboto", "Noto", "Helvetica Neue", "Arial", "Verdana", Verdana, sans-serif;
+    --font-family-monospace: "Roboto Mono", "Inconsolata-g", "Inconsolata-dz", "Inconsolata", "Source Code Pro", Courier;
     --font-weight-thin: 100;
     --font-weight-light: 200;
     --font-weight-regular: 400;
@@ -238,7 +245,7 @@ tbody {
     text-rendering: var(--font-rendering);
 }
 
-p, option, label, strong, small, span, td {
+p, option, label, small, span, td {
     margin: 0;
 }
 
@@ -246,7 +253,7 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0 0 20px 0;
 }
 
-small, strong, p, option, label, span, td {
+small, p, option, label, span, td {
     font-size: var(--font-size-body);
     line-height: var(--line-height-body);
 }
@@ -257,7 +264,6 @@ small {
 
 strong {
     font-weight: var(--font-weight-emphasized);
-    color: var(--color-emphasized-dark);
 }
 
 small, p, option, label, span, td {
