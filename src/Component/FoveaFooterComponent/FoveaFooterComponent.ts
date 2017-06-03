@@ -5,7 +5,7 @@ import "../../Component/IconComponent/IconComponent";
 
 @selector("fovea-footer-element")
 export class FoveaFooterComponent extends Component implements IFoveaFooterComponent {
-
+	public role = "contentinfo";
 	public static styles (): string {
 		return ``;
 	}

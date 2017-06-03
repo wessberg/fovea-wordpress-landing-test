@@ -4,6 +4,8 @@ import "../ScrollComponent/ScrollComponent";
 
 @selector("code-element")
 export class CodeComponent extends Component implements ICodeComponent {
+	public role = "figure";
+
 	public static styles (): string {
 		return `
 			:host-context([center]),

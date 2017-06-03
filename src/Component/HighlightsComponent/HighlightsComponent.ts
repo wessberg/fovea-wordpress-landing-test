@@ -5,6 +5,7 @@ import "../IconComponent/IconComponent";
 
 @selector("highlights-element")
 export class HighlightsComponent extends Component implements IHighlightsComponent {
+	public role = "complementary";
 
 	public static markup (): string {
 		return `

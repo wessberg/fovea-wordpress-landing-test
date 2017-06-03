@@ -5,6 +5,7 @@ import {IFoveaAppBarComponent} from "./Interface/IFoveaAppBarComponent";
 
 @selector("fovea-app-bar-element")
 export class FoveaAppBarComponent extends Component implements IFoveaAppBarComponent {
+	public role = "navigation";
 
 	public static styles (): string {
 		return `

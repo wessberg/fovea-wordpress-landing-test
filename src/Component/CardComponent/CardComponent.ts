@@ -3,6 +3,7 @@ import {Component, selector} from "../Component/Component";
 
 @selector("card-element")
 export class CardComponent extends Component implements ICardComponent {
+	public role = "complementary";
 
 	public static styles (): string {
 		return `

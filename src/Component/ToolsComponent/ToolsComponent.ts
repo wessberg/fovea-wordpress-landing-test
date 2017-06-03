@@ -6,6 +6,7 @@ import "../IconComponent/IconComponent";
 
 @selector("tools-element")
 export class ToolsComponent extends Component implements IToolsComponent {
+	public role = "complementary";
 
 	public static styles (): string {
 		return `

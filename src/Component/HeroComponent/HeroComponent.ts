@@ -4,7 +4,7 @@ import "../MaterialTrianglesComponent/MaterialTrianglesComponent";
 
 @selector("hero-element")
 export class HeroComponent extends Component implements IHeroComponent {
-	public tabindex: string = "0";
+	public role = "banner";
 
 	public static styles (): string {
 		return `

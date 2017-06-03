@@ -299,7 +299,7 @@ a {
     transition: color var(--duration-short) var(--easing-standard-curve);
 }
 
-a:hover {
+a:hover, a:focus {
     color: var(--color-primary-120);
 }
 

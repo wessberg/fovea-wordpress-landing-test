@@ -3,6 +3,8 @@ import {IFrame} from "./Interface/IFrame";
 
 @selector("frame-element")
 export class Frame extends Component implements IFrame {
+	public role = "application";
+
 	public static styles (): string {
 		return `
 			:host {

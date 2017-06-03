@@ -10,7 +10,9 @@ export class Page extends ScrollComponent implements IPage {
 		return super.styles() + `
 			:host {
 				height: calc(100vh - var(--app-bar-portrait-height-desktop));
-				margin-top: var(--app-bar-portrait-height-desktop);
+				top: var(--app-bar-portrait-height-desktop);
+				margin-bottom: var(--app-bar-portrait-height-desktop);
+				
 			}
 		`;
 	}

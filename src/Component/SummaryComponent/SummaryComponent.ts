@@ -7,6 +7,7 @@ import "../ToolsComponent/ToolsComponent";
 
 @selector("summary-element")
 export class SummaryComponent extends Component implements ISummaryComponent {
+	public role = "complementary";
 
 	public static styles (): string {
 		return `

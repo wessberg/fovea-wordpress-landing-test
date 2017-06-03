@@ -3,7 +3,7 @@ import {IAppFooterComponent} from "./Interface/IAppFooterComponent";
 
 @selector("app-footer-element")
 export class AppFooterComponent extends Component implements IAppFooterComponent {
-	public role = "navigation";
+	public role = "contentinfo";
 
 	public static styles (): string {
 		return `
@@ -78,7 +78,8 @@ export class AppFooterComponent extends Component implements IAppFooterComponent
 				color: var(--color-white-100) !important;
 			}
 			
-			.rowSlot::slotted(a:hover) {
+			.rowSlot::slotted(a:hover),
+			.rowSlot::slotted(a:focus) {
 				color: var(--color-primary-100) !important;
 			}
 			

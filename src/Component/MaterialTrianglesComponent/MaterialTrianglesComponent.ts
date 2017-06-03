@@ -4,7 +4,6 @@ import {IMaterialTrianglesComponent} from "./Interface/IMaterialTrianglesCompone
 
 @selector("material-triangles-element")
 export class MaterialTrianglesComponent extends Component implements IMaterialTrianglesComponent {
-	public tabindex: string = "0";
 
 	public static styles (): string {
 		return `

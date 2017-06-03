@@ -7,6 +7,7 @@ import {Component, selector} from "../Component/Component";
 
 @selector("home-hero-element")
 export class HomeHeroComponent extends Component implements IHomeHeroComponent {
+	public role = "banner";
 
 	public static markup (): string {
 		return `
