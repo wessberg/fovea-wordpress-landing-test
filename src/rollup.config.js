@@ -1,6 +1,7 @@
 import typescriptPlugin from "rollup-plugin-typescript2";
 import nodeResolve from "rollup-plugin-node-resolve";
 import babili from "rollup-plugin-babili";
+import EnvironmentPlugin from "@wessberg/rollup-plugin-environment";
 import gzip from "rollup-plugin-gzip";
 import {Config} from "@wessberg/environment";
 
@@ -36,6 +37,7 @@ export default {
 	format: "iife",
 	sourceMap: false,
 	plugins: [
+		EnvironmentPlugin(),
 		typescriptPlugin(),
 		nodeResolve({
 			// use "module" field for ES6 module if possible

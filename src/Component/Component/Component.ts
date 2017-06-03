@@ -2,7 +2,6 @@ import {IComponent, IComponentConstructor} from "./IComponent";
 
 export function selector (selector: string) {
 	return (prototype: IComponentConstructor) => {
-
 		customElements.define(selector, prototype);
 		const styles = prototype.styles();
 		const markup = prototype.markup();
