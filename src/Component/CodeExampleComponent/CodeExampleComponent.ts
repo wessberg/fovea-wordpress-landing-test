@@ -8,6 +8,8 @@ export class CodeExampleComponent extends Component implements ICodeExampleCompo
 	public static styles () {
 		return `
 			code-element {
+				position: relative;
+				width: 100%;
 				max-width: 369px;
 				max-height: inherit;
 				box-shadow: var(--shadow-level3);

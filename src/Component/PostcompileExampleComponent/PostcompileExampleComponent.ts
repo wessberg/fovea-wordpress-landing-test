@@ -28,7 +28,7 @@ export class PostcompileExampleComponent extends Component implements IPostcompi
 			postcompile-code-example-element {
 				max-height: 150px;
 				margin: auto;
-				max-width: calc(100% - var(--width-icon-larger) );
+				width: calc(100% - var(--width-icon-larger) - var(--distance-regular) );
 			}
 
 		`;

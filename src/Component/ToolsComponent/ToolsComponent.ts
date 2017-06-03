@@ -34,6 +34,7 @@ export class ToolsComponent extends Component implements IToolsComponent {
 				justify-content: center;
 				align-content: center;
 				max-width: var(--width-frame-max);
+				width: 100%;
 				margin: 0 auto;
 			}
 			

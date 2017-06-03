@@ -8,14 +8,15 @@ export class DataBindingExampleComponent extends Component implements IDataBindi
 	public static styles (): string {
 		return `
 			:host {
+				position: relative;
 				text-align: center;
 				width: 100%;
+				max-width: var(--width-frame-max);
 				justify-content: center;
 				align-content: center;
-				position: relative;
 				display: inline-flex;
 				flex-direction: column;
-				margin: 0;
+				margin: 0 auto;
 			}
 			
 			card-element > p {
@@ -36,6 +37,7 @@ export class DataBindingExampleComponent extends Component implements IDataBindi
 			code-example-element {
 				max-height: 450px;
 				margin: var(--distance-minimum) auto;
+				width: 100%;
 			}
 			
 			@media screen and (min-width: 700px) {
@@ -46,7 +48,7 @@ export class DataBindingExampleComponent extends Component implements IDataBindi
 				
 				card-element,
 				code-example-element {
-					margin: var(--distance-minimum);
+					margin: var(--distance-minimum) 0;
 				}
 			}
 		`;

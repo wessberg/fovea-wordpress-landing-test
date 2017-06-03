@@ -26,6 +26,7 @@ export class HeroComponent extends Component implements IHeroComponent {
 			::slotted(*) {
 				text-align: center;
 				z-index: 1;
+				margin: 0 auto;
 			}
 		`;
 	}
