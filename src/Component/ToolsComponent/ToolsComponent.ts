@@ -3,6 +3,7 @@ import {IToolsComponent} from "./Interface/IToolsComponent";
 import "../FoveaRollupWebpackComponent/FoveaRollupWebpackComponent";
 import "../CardComponent/CardComponent";
 import "../IconComponent/IconComponent";
+import "../AnchorComponent/AnchorComponent";
 
 @selector("tools-element")
 export class ToolsComponent extends Component implements IToolsComponent {
@@ -64,7 +65,7 @@ export class ToolsComponent extends Component implements IToolsComponent {
 				padding-right: var(--distance-minimum);
 			}
 			
-			card-element > button-element {
+			card-element > anchor-element > button-element {
 				width: 120px;
 			}
 			
@@ -107,11 +108,13 @@ export class ToolsComponent extends Component implements IToolsComponent {
 				<card-element>
 						<h6>Works with your existing build tools</h6>
 						<p>
-							Fovea won’t ask you to change your tools, habits or the way you write code. Instead, Fovea is a simple plugin for your favorite bundler such as <a href="https://rollupjs.org/" target="_blank">rollup</a> or <a href="https://webpack.js.org/" target="_blank">webpack</a>.
+							Fovea won’t ask you to change your tools, habits or the way you write code. Instead, Fovea is a simple plugin for your favorite bundler such as <anchor-element href="https://rollupjs.org/" target="_blank">rollup</anchor-element> or <anchor-element href="https://webpack.js.org/" target="_blank">webpack</anchor-element>.
 						</p>
-						<button-element>
-							<p>Learn more</p>
-						</button-element>
+						<anchor-element href="/learn">
+							<button-element>
+								<p>Learn more</p>
+							</button-element>
+						</anchor-element>
 				</card-element>
 				<fovea-rollup-webpack-element></fovea-rollup-webpack-element>
 			</section>
@@ -123,9 +126,11 @@ export class ToolsComponent extends Component implements IToolsComponent {
 						<p>
 							Fovea is built with TypeScript. Whether or not you annotate your code, you will have a great development experience!
 						</p>
-						<button-element>
-							<p>Learn more</p>
-						</button-element>
+						<anchor-element href="/learn">
+							<button-element>
+								<p>Learn more</p>
+							</button-element>
+						</anchor-element>
 				</card-element>
 			</section>
 		`;

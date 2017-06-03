@@ -1,6 +1,7 @@
+import "../CodeExampleComponent/CodeExampleComponent";
+import "../AnchorComponent/AnchorComponent";
 import {Component, selector} from "../Component/Component";
 import {IDataBindingExampleComponent} from "./Interface/IDataBindingExampleComponent";
-import "../CodeExampleComponent/CodeExampleComponent";
 
 @selector("data-binding-example-element")
 export class DataBindingExampleComponent extends Component implements IDataBindingExampleComponent {
@@ -23,7 +24,7 @@ export class DataBindingExampleComponent extends Component implements IDataBindi
 				margin: 20px 0;
 			}
 			
-			card-element > button-element {
+			card-element > anchor-element > button-element {
 				width: 120px;
 			}
 			
@@ -67,9 +68,11 @@ export class DataBindingExampleComponent extends Component implements IDataBindi
 				<p>
 					Not only can you bind complex data to elements and text nodes. Fovea comes with groundbreaking support for binding data to the CSS styles of individual view component instances. No serializing is going on. Instead, the values or references are passed directly. It just works!
 				</p>
-				<button-element>
-					<p>Learn more</p>
-				</button-element>
+				<anchor-element href="/learn">
+					<button-element>
+						<p>Learn more</p>
+					</button-element>
+				</anchor-element>
 			</card-element>
 		`;
 	}

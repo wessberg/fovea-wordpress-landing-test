@@ -27,44 +27,83 @@ export class AppBarComponent extends Component implements IAppBarComponent {
 			:host {
 				box-sizing: border-box;
 				position: fixed;
+				display: block;
 				top: 0;
 				left: 0;
 				right: 0;
 				width: 100%;
+				margin: 0;
+				padding: 0;
 				height: var(--app-bar-portrait-height-desktop);
 				box-shadow: var(--shadow-level1);
 				z-index: 998;
 			}
-	
-			#titleSlot::slotted(*),
-			#leftIconSlot::slotted(*) {
-				position: absolute;
-				top: 0 !important;
-				bottom: 0 !important;
-				margin-top: auto !important;
-				margin-bottom: auto !important;
+			
+			#menuItems {
+				position: relative;
+				display: flex;
+				padding: 0 10px;
+				margin: auto 0;
+				height: 100%;
+				flex-direction: row;
+				align-content: center;
+				justify-content: center;
+				width: 100%;
 			}
 			
 			#titleSlot::slotted(*) {
 				user-select: none !important;
-				left: calc(var(--distance-minimum) + var(--width-icon-medium) + var(--distance-minimum)) !important;
-				height: var(--font-size-title) !important;
-				line-height: 17px !important;
-				vertical-align: middle !important;
-				padding: 0 !important;
+				font-size: var(--font-size-title) !important;
+			}
+			
+			::slotted(*) {
+				margin: auto 0 !important;
+				color: var(--color-primary-text-light) !important;
+				vertical-align: middle;
+				line-height: 0 !important;
+			}
+			
+			#menuItemSlot::slotted(*) {
+				order: 3;
+			}
+			
+			#titleSlot::slotted(*) {
+				order: 1;
+				display: none;
 			}
 	
 			#leftIconSlot::slotted(*) {
-				left: var(--distance-minimum) !important;
-				border-radius: 50% !important;
+				order: 0;
+			}
+			
+			#rightIconSlot::slotted(*) {
+				order: 4;
+			}
+			
+			.flexer {
+				flex-grow: 1;
+				order: 2;
+			}
+
+			@media screen and (min-width: 440px) {
+				#titleSlot::slotted(*) {
+					order: 1;
+					display: block;
+				}
 			}
 		`;
 	}
 
 	public static markup (): string {
 		return `
-			<slot id="leftIconSlot" name="leftIcon"></slot>
-			<slot id="titleSlot" name="title"></slot>
+			
+			<section id="menuItems">
+				<slot id="leftIconSlot" class="iconSlot" name="leftIcon"></slot>
+				<slot id="titleSlot" name="title"></slot>
+				<div class="flexer"></div>
+				<slot id="menuItemSlot" name="menuItem"></slot>
+				<slot id="rightIconSlot" class="iconSlot" name="rightIcon"></slot>
+			</section>
 		`;
 	}
 }

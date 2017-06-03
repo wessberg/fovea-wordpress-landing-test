@@ -74,12 +74,12 @@ export class AppFooterComponent extends Component implements IAppFooterComponent
 				font-size: var(--font-size-caption) !important;
 			}
 			
-			.rowSlot::slotted(a) {
+			.rowSlot::slotted(anchor-element) {
 				color: var(--color-white-100) !important;
 			}
 			
-			.rowSlot::slotted(a:hover),
-			.rowSlot::slotted(a:focus) {
+			.rowSlot::slotted(anchor-element:hover),
+			.rowSlot::slotted(anchor-element:focus) {
 				color: var(--color-primary-100) !important;
 			}
 			

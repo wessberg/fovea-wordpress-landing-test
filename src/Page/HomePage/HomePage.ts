@@ -11,6 +11,7 @@ import {selector} from "../../Component/Component/Component";
 
 @selector("home-page-element")
 export class HomePage extends Page implements IHomePage {
+	public static routeName = /\//;
 
 	public static markup (): string {
 		return `

@@ -24,6 +24,11 @@ export class ButtonComponent extends Component implements IButtonComponent {
 			align-self: center;
 			justify-self: center;
 		}
+		
+		:host-context([round]),
+		:host([round]) {
+			border-radius: 50%;
+		}
 
 		:host {
 			user-select: none;
@@ -47,16 +52,30 @@ export class ButtonComponent extends Component implements IButtonComponent {
 			border-radius: var(--box-radius);
 			flex-shrink: 0;
 			transition: background var(--duration-medium) var(--easing-standard-curve);
-		}
-		
-		::slotted(*) {
 			color: var(--color-primary-100) !important;
 			font-size: var(--font-size-button) !important;
 			line-height: var(--font-size-button) !important;
 			font-weight: var(--font-weight-button) !important;
-			text-transform: uppercase;
+		}
+		
+		:host-context([large-text]),
+		:host([large-text]) {
+			font-size: var(--font-size-title) !important;
+		}
+		
+		:host-context([keep-case]) ::slotted(*),
+		:host([keep-case]) ::slotted(*) {
+			text-transform: none;
+		}
+		
+		::slotted(*) {
+			color: inherit !important;
+			font-size: inherit !important;
+			line-height: inherit !important;
+			font-weight: inherit !important;
 			pointer-events: none;
 			cursor: pointer !important;
+			text-transform: uppercase;
 		}
 		
 		::slotted(icon-element) {
@@ -67,7 +86,7 @@ export class ButtonComponent extends Component implements IButtonComponent {
 			color: var(--color-primary-100);
 		}
 		
-		:host([primary]) {
+		:host(:not([no-background])[primary]) {
 			background: var(--color-primary-100);
 		}
 		
@@ -75,7 +94,7 @@ export class ButtonComponent extends Component implements IButtonComponent {
 			color: var(--color-white-70);
 		}
 		
-		:host([primary]:hover) {
+		:host(:not([no-background])[primary]:hover) {
 			background: var(--color-primary-120) !important;
 		}
 		
@@ -87,7 +106,7 @@ export class ButtonComponent extends Component implements IButtonComponent {
 			fill: var(--color-icon-light) !important;
 		}
 			
-		:host([accent]) {
+		:host(:not([no-background])[accent]) {
 			background: var(--color-accent-100);
 		}
 		
@@ -95,7 +114,7 @@ export class ButtonComponent extends Component implements IButtonComponent {
 			color: var(--color-white-70);
 		}
 		
-		:host([accent]:hover) {
+		:host(:not([no-background])[accent]:hover) {
 			background: var(--color-accent-120);
 		}
 		
@@ -107,7 +126,7 @@ export class ButtonComponent extends Component implements IButtonComponent {
 			fill: var(--color-icon-light) !important;
 		}
 			
-		:host([dark]) {
+		:host(:not([no-background])[dark]) {
 			background: var(--color-black-70);
 		}
 		
@@ -115,7 +134,7 @@ export class ButtonComponent extends Component implements IButtonComponent {
 			color: var(--color-white-70);
 		}
 		
-		:host([dark]:hover) {
+		:host(:not([no-background])[dark]:hover) {
 			background: var(--color-black-87);
 		}
 		
@@ -127,7 +146,7 @@ export class ButtonComponent extends Component implements IButtonComponent {
 			fill: var(--color-icon-light) !important;
 		}
 			
-		:host([light]) {
+		:host(:not([no-background])[light]) {
 			background: var(--color-white-100);
 		}
 		
@@ -135,7 +154,7 @@ export class ButtonComponent extends Component implements IButtonComponent {
 			color: var(--color-icon-dark);
 		}
 		
-		:host([light]:hover) {
+		:host(:not([no-background])[light]:hover) {
 			background: var(--color-white-87);
 		}
 		
@@ -147,11 +166,11 @@ export class ButtonComponent extends Component implements IButtonComponent {
 			fill: var(--color-icon-dark) !important;
 		}
 		
-		:host([warning]) {
+		:host(:not([no-background])[warning]) {
 			background: var(--color-red-100);
 		}
 		
-		:host([warning]:hover) {
+		:host(:not([no-background])[warning]:hover) {
 			background: var(--color-red-120);
 		}
 		
@@ -175,7 +194,7 @@ export class ButtonComponent extends Component implements IButtonComponent {
 			box-shadow: var(--shadow-level3);
 		}
 		
-		:host(:hover) {
+		:host(:not([no-background]):hover) {
 			background: var(--color-black-06);
 		}
 
@@ -184,9 +203,5 @@ export class ButtonComponent extends Component implements IButtonComponent {
 			opacity: .6;
 		}
 		`;
-	}
-
-	protected connectedCallback (): void {
-		super.connectedCallback();
 	}
 }

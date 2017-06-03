@@ -12,6 +12,7 @@ export class CodeExampleComponent extends Component implements ICodeExampleCompo
 				width: 100%;
 				max-width: 369px;
 				max-height: inherit;
+				margin: auto;
 				box-shadow: var(--shadow-level3);
 			}
 		`;

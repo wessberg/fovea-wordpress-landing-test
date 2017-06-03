@@ -25,7 +25,8 @@ export class CardComponent extends Component implements ICardComponent {
 			text-align: justify;
 		}
 		
-		::slotted(button-element) {
+		::slotted(button-element),
+		::slotted(anchor-element) {
 			align-self: flex-end;
 			justify-self: flex-end;
 		}

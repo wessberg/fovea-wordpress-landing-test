@@ -9,10 +9,17 @@ import {IAgentDetector} from "./AgentDetector/Interface/IAgentDetector";
 import {AgentDetector} from "./AgentDetector/AgentDetector";
 import {IGlobalEventBlocker} from "../EventHandler/GlobalEventBlocker/Interface/IGlobalEventBlocker";
 import {GlobalEventBlocker} from "../EventHandler/GlobalEventBlocker";
+import {IWordpressPageStore} from "../Store/Store/WordpressPageStore/Interface/IWordpressPageStore";
+import {WordpressPageStore} from "../Store/Store/WordpressPageStore/WordpressPageStore";
+import {INavigationUtil} from "./NavigationUtil/Interface/INavigationUtil";
+import {NavigationUtil} from "./NavigationUtil/NavigationUtil";
+import {Routes} from "../Routes";
 
+export const wordpressPageStore: IWordpressPageStore = new WordpressPageStore();
 export const globalEventBlocker: IGlobalEventBlocker = new GlobalEventBlocker();
 export const agentDetector: IAgentDetector = new AgentDetector();
 export const eventUtil: IEventUtil = new EventUtil();
 export const svgIconUtil: ISvgIconUtil = new SvgIconUtil();
 export const waitOperations: IWaitOperations = new WaitOperations();
 export const animationOperations: IAnimationOperations = new AnimationOperations();
+export const navigationUtil: INavigationUtil = new NavigationUtil(Routes(wordpressPageStore.pages));

@@ -260,7 +260,6 @@ span,
 td,
 tr,
 pre,
-a,
 tbody {
     font-family: var(--font-family);
     user-select: none;
@@ -268,7 +267,7 @@ tbody {
     text-rendering: var(--font-rendering);
 }
 
-p, option, label, small, span, td, pre, a {
+p, option, label, small, span, td, pre {
     margin: 0;
 }
 
@@ -276,7 +275,7 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0 0 20px 0;
 }
 
-small, p, option, label, span, td, pre, a {
+small, p, option, label, span, td, pre {
     font-size: var(--font-size-body);
     line-height: var(--line-height-body);
 }
@@ -289,18 +288,8 @@ strong {
     font-weight: var(--font-weight-emphasized);
 }
 
-small, p, option, label, span, td, a {
+small, p, option, label, span, td {
     font-weight: var(--font-weight-body);
-}
-
-a {
-    color: var(--color-primary-100);
-    cursor: pointer;
-    transition: color var(--duration-short) var(--easing-standard-curve);
-}
-
-a:hover, a:focus {
-    color: var(--color-primary-120);
 }
 
 p,
@@ -358,10 +347,6 @@ caption {
     line-height: var(--font-size-caption);
     font-weight: var(--font-weight-caption);
     color: var(--color-caption-dark);
-}
-
-a {
-    text-decoration: none;
 }
 
 hr {

@@ -1,6 +1,14 @@
+declare interface WPPage {
+	post_name: string;
+	post_title: string;
+	menu_order: number;
+	post_type: string;
+}
+
 declare interface WPDict {
 	templateUrl: string;
 	version: string;
+	pages: WPPage[];
 }
 
 declare const WP: WPDict;
