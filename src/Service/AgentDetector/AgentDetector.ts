@@ -5,6 +5,78 @@ import {GlobalObject} from "@wessberg/globalobject";
 
 export class AgentDetector implements IAgentDetector {
 	public readonly agent: string = (navigator == null || navigator.userAgent == null) ? "" : navigator.userAgent.toLowerCase();
+	public readonly browser: BrowserKind = this.detectBrowser();
+	public readonly isEdge: boolean = this.browser === BrowserKind.EDGE;
+	public readonly isInternetExplorer: boolean = this.browser === BrowserKind.IE;
+	public readonly isInternetExplorerOrEdge: boolean = this.isEdge || this.isInternetExplorer;
+	public readonly isFirefox: boolean = this.browser === BrowserKind.FIREFOX;
+	public readonly isFirefoxMobile: boolean = this.browser === BrowserKind.FIREFOX_MOBILE;
+	public readonly isFirefoxOrFirefoxMobile: boolean = this.isFirefox || this.isFirefoxMobile;
+	public readonly isSamsungInternet: boolean = this.browser === BrowserKind.SAMSUNG_INTERNET;
+	public readonly isUCBrowser: boolean = this.browser === BrowserKind.UC_BROWSER;
+	public readonly isChrome: boolean = this.browser === BrowserKind.CHROME;
+	public readonly isSafari: boolean = this.browser === BrowserKind.SAFARI;
+	public readonly isOpera: boolean = this.browser === BrowserKind.OPERA;
+	public readonly isBlackberry: boolean = this.browser === BrowserKind.BLACKBERRY;
+	public readonly isOperaMobile: boolean = this.browser === BrowserKind.OPERA_MOBILE;
+	public readonly isIEMobile: boolean = this.browser === BrowserKind.IE_MOBILE;
+	public readonly isOperaMini: boolean = this.browser === BrowserKind.OPERA_MINI;
+	public readonly isNative: boolean = GlobalObject.cordova != null;
+	public readonly isAndroidBrowser: boolean = this.browser === BrowserKind.ANDROID_STOCK && !this.isNative;
+	public readonly isMobile = this.isNative || /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(navigator.userAgent);
+	public readonly nativePlatform: NativePlatformKind|null = this.detectNativePlatform();
+	public readonly isIOSDevice: boolean = this.isIOSAgent() || this.nativePlatform === NativePlatformKind.IOS;
+	public readonly isIPhoneDevice: boolean = /iphone|ipod/i.test(this.agent);
+	public readonly isIPadDevice: boolean = /ipad/i.test(this.agent);
+	public readonly isSafariOnDesktop: boolean = this.browser === BrowserKind.SAFARI && !this.isMobile;
+	public readonly isSafariOnMobile: boolean = this.isMobile && !this.isNative && this.browser === BrowserKind.SAFARI;
+	public readonly isNativeIOS: boolean = this.nativePlatform === NativePlatformKind.IOS;
+	public readonly isNativeAndroid: boolean = this.nativePlatform === NativePlatformKind.ANDROID;
+	public readonly isAndroidDevice: boolean = this.isNativeAndroid || this.agent.includes("android");
+	public readonly isAppleDevice: boolean = this.isNativeIOS || this.browser === BrowserKind.SAFARI;
+	public readonly isDesktopDevice: boolean = !this.isMobile;
+	public readonly isWebkitBrowser: boolean = this.agent.includes("applewebkit");
+	public readonly iOSVersion: number = this.isIOSDevice ? this.detectIOSVersion() : -1;
+	public readonly IEVersion: number = this.isInternetExplorer ? this.detectIEVersion() : -1;
+	public readonly chromeVersion: number = this.isChrome ? this.detectChromeVersion() : -1;
+	public readonly firefoxVersion: number = this.isFirefox ? this.detectFirefoxVersion() : -1;
+	public readonly safariVersion: number = this.isSafari ? this.detectSafariVersion() : -1;
+	public readonly edgeVersion: number = this.isEdge ? this.detectEdgeVersion() : -1;
+	public readonly operaVersion: number = this.isOpera ? this.detectOperaVersion() : -1;
+	public readonly operaMiniVersion: number = this.isOperaMini ? this.detectOperaMiniVersion() : -1;
+	public readonly operaMobileVersion: number = this.isOperaMobile ? this.detectOperaMobileVersion() : -1;
+	public readonly androidVersion: number = this.isAndroidDevice ? this.detectAndroidVersion() : -1;
+	public readonly samsungInternetVersion: number = this.isSamsungInternet ? this.detectSamsungInternetVersion() : -1;
+	public readonly firefoxMobileVersion: number = this.isFirefoxMobile ? this.detectFirefoxMobileVersion() : -1;
+	public readonly UCBrowserVersion: number = this.isFirefoxMobile ? this.detectUCBrowserVersion() : -1;
+	public readonly IEMobileVersion: number = this.isIEMobile ? this.detectIEMobileVersion() : -1;
+	public readonly browserVersion: number = (() => {
+		if (this.isIOSDevice) return this.iOSVersion;
+		if (this.isInternetExplorer) return this.IEVersion;
+		if (this.isChrome) return this.chromeVersion;
+		if (this.isFirefox) return this.firefoxVersion;
+		if (this.isSafari) return this.safariVersion;
+		if (this.isEdge) return this.edgeVersion;
+		if (this.isOpera) return this.operaVersion;
+		if (this.isOperaMini) return this.operaMiniVersion;
+		if (this.isOperaMobile) return this.operaMobileVersion;
+		if (this.isAndroidDevice) return this.androidVersion;
+		if (this.isSamsungInternet) return this.samsungInternetVersion;
+		if (this.isFirefoxMobile) return this.firefoxMobileVersion;
+		if (this.isUCBrowser) return this.UCBrowserVersion;
+		if (this.isIEMobile) return this.IEMobileVersion;
+		return -1;
+	})();
+	public readonly vendorPrefix = (() => {
+		if (this.isWebkitBrowser) return "webkit";
+		if (this.isFirefoxOrFirefoxMobile) return "moz";
+		return "";
+	})();
+	public readonly vendorPrefixDashed = (() => {
+		if (this.isWebkitBrowser) return "-webkit-";
+		if (this.isFirefoxOrFirefoxMobile) return "-moz-";
+		return "";
+	})();
 
 	private detectIOSVersion (): number {
 
@@ -43,13 +115,13 @@ export class AgentDetector implements IAgentDetector {
 
 	private detectIEVersion (): number {
 
-		if (!document.all)                             		return 11;
-		if (document.all && !document.compatMode)      		return 5;
+		if (!document.all) return 11;
+		if (document.all && !document.compatMode) return 5;
 		if (document.all && !GlobalObject.XMLHttpRequest) return 6;
-		if (document.all && !document.querySelector)    	return 7;
-		if (document.all && !document.addEventListener)  	return 8;
-		if (document.all && !GlobalObject.atob)           return 9;
-		if (document.all)                                	return 10;
+		if (document.all && !document.querySelector) return 7;
+		if (document.all && !document.addEventListener) return 8;
+		if (document.all && !GlobalObject.atob) return 9;
+		if (document.all) return 10;
 		return -1;
 	}
 
@@ -89,7 +161,7 @@ export class AgentDetector implements IAgentDetector {
 			if (version >= WEBKIT_BUILD_526) return 4;
 			if (version >= WEBKIT_BUILD_522) return 3;
 			if (version >= WEBKIT_BUILD_412) return 2;
-			if (version >= WEBKIT_BUILD_85)  return 1;
+			if (version >= WEBKIT_BUILD_85) return 1;
 			return 0;
 		}
 		return -1;
@@ -137,14 +209,14 @@ export class AgentDetector implements IAgentDetector {
 		return (this.agent.indexOf("chrome") !== -1 && this.agent.indexOf("edge") === -1 && this.agent.indexOf("chromeframe") === -1) && !this.isIOSAgent();
 	}
 
-	private detectNativePlatform (): NativePlatformKind | null {
+	private detectNativePlatform (): NativePlatformKind|null {
 		if (!this.isNative) return null;
 
 		const platform = GlobalObject.device ? GlobalObject.device.platform : null;
 		if (platform != null) {
 			const uppercased = platform.toUpperCase();
-			if (uppercased === NativePlatformKind[NativePlatformKind.ANDROID])  return NativePlatformKind.ANDROID;
-			if (uppercased === NativePlatformKind[NativePlatformKind.IOS])      return NativePlatformKind.IOS;
+			if (uppercased === NativePlatformKind[NativePlatformKind.ANDROID]) return NativePlatformKind.ANDROID;
+			if (uppercased === NativePlatformKind[NativePlatformKind.IOS]) return NativePlatformKind.IOS;
 		}
 		return this.browser === BrowserKind.SAFARI ? NativePlatformKind.IOS : NativePlatformKind.ANDROID;
 	}
@@ -184,80 +256,5 @@ export class AgentDetector implements IAgentDetector {
 			return BrowserKind.UNKNOWN;
 		}
 	}
-
-	public readonly browser: BrowserKind = this.detectBrowser();
-	public readonly isEdge: boolean = this.browser === BrowserKind.EDGE;
-	public readonly isInternetExplorer: boolean = this.browser === BrowserKind.IE;
-	public readonly isInternetExplorerOrEdge: boolean = this.isEdge || this.isInternetExplorer;
-	public readonly isFirefox: boolean = this.browser === BrowserKind.FIREFOX;
-	public readonly isFirefoxMobile: boolean = this.browser === BrowserKind.FIREFOX_MOBILE;
-	public readonly isFirefoxOrFirefoxMobile: boolean = this.isFirefox || this.isFirefoxMobile;
-	public readonly isSamsungInternet: boolean = this.browser === BrowserKind.SAMSUNG_INTERNET;
-	public readonly isUCBrowser: boolean = this.browser === BrowserKind.UC_BROWSER;
-	public readonly isChrome: boolean = this.browser === BrowserKind.CHROME;
-	public readonly isSafari: boolean = this.browser === BrowserKind.SAFARI;
-	public readonly isOpera: boolean = this.browser === BrowserKind.OPERA;
-	public readonly isBlackberry: boolean = this.browser === BrowserKind.BLACKBERRY;
-	public readonly isOperaMobile: boolean = this.browser === BrowserKind.OPERA_MOBILE;
-	public readonly isIEMobile: boolean = this.browser === BrowserKind.IE_MOBILE;
-	public readonly isOperaMini: boolean = this.browser === BrowserKind.OPERA_MINI;
-	public readonly isNative: boolean = GlobalObject.cordova != null;
-	public readonly isAndroidBrowser: boolean = this.browser === BrowserKind.ANDROID_STOCK && !this.isNative;
-	public readonly isMobile = this.isNative || /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(navigator.userAgent);
-	public readonly nativePlatform: NativePlatformKind | null = this.detectNativePlatform();
-	public readonly isIOSDevice: boolean = this.isIOSAgent() || this.nativePlatform === NativePlatformKind.IOS;
-	public readonly isIPhoneDevice: boolean = /iphone|ipod/i.test(this.agent);
-	public readonly isIPadDevice: boolean = /ipad/i.test(this.agent);
-	public readonly isSafariOnDesktop: boolean = this.browser === BrowserKind.SAFARI && !this.isMobile;
-	public readonly isSafariOnMobile: boolean = this.isMobile && !this.isNative && this.browser === BrowserKind.SAFARI;
-	public readonly isNativeIOS: boolean = this.nativePlatform === NativePlatformKind.IOS;
-	public readonly isNativeAndroid: boolean = this.nativePlatform === NativePlatformKind.ANDROID;
-	public readonly isAndroidDevice: boolean = this.isNativeAndroid || this.agent.includes("android");
-	public readonly isAppleDevice: boolean = this.isNativeIOS || this.browser === BrowserKind.SAFARI;
-	public readonly isDesktopDevice: boolean = !this.isMobile;
-	public readonly isWebkitBrowser: boolean = this.agent.includes("applewebkit");
-	public readonly iOSVersion: number = this.isIOSDevice ? this.detectIOSVersion() : -1;
-	public readonly IEVersion: number = this.isInternetExplorer ? this.detectIEVersion() : -1;
-	public readonly chromeVersion: number = this.isChrome ? this.detectChromeVersion() : -1;
-	public readonly firefoxVersion: number = this.isFirefox ? this.detectFirefoxVersion() : -1;
-	public readonly safariVersion: number = this.isSafari ? this.detectSafariVersion() : -1;
-	public readonly edgeVersion: number = this.isEdge ? this.detectEdgeVersion() : -1;
-	public readonly operaVersion: number = this.isOpera ? this.detectOperaVersion() : -1;
-	public readonly operaMiniVersion: number = this.isOperaMini ? this.detectOperaMiniVersion() : -1;
-	public readonly operaMobileVersion: number = this.isOperaMobile ? this.detectOperaMobileVersion() : -1;
-	public readonly androidVersion: number = this.isAndroidDevice ? this.detectAndroidVersion() : -1;
-	public readonly samsungInternetVersion: number = this.isSamsungInternet ? this.detectSamsungInternetVersion() : -1;
-	public readonly firefoxMobileVersion: number = this.isFirefoxMobile ? this.detectFirefoxMobileVersion() : -1;
-	public readonly UCBrowserVersion: number = this.isFirefoxMobile ? this.detectUCBrowserVersion() : -1;
-	public readonly IEMobileVersion: number = this.isIEMobile ? this.detectIEMobileVersion() : -1;
-	public readonly browserVersion: number = (() => {
-		if (this.isIOSDevice)        return this.iOSVersion;
-		if (this.isInternetExplorer) return this.IEVersion;
-		if (this.isChrome)            return this.chromeVersion;
-		if (this.isFirefox)          return this.firefoxVersion;
-		if (this.isSafari)            return this.safariVersion;
-		if (this.isEdge)              return this.edgeVersion;
-		if (this.isOpera)            return this.operaVersion;
-		if (this.isOperaMini)        return this.operaMiniVersion;
-		if (this.isOperaMobile)      return this.operaMobileVersion;
-		if (this.isAndroidDevice)    return this.androidVersion;
-		if (this.isSamsungInternet)  return this.samsungInternetVersion;
-		if (this.isFirefoxMobile)    return this.firefoxMobileVersion;
-		if (this.isUCBrowser)        return this.UCBrowserVersion;
-		if (this.isIEMobile)          return this.IEMobileVersion;
-		return -1;
-	})();
-
-	public readonly vendorPrefix = (() => {
-		if (this.isWebkitBrowser)            return "webkit";
-		if (this.isFirefoxOrFirefoxMobile)  return "moz";
-		return "";
-	})();
-
-	public readonly vendorPrefixDashed = (() => {
-		if (this.isWebkitBrowser)            return "-webkit-";
-		if (this.isFirefoxOrFirefoxMobile)  return "-moz-";
-		return "";
-	})();
 
 }

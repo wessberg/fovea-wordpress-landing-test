@@ -2,6 +2,8 @@ import "../../Component/HighlightsComponent/HighlightsComponent";
 import "../../Component/HomeHeroComponent/HomeHeroComponent";
 import "../../Component/SummaryComponent/SummaryComponent";
 import "../../Component/ToolsComponent/ToolsComponent";
+import "../../Component/FoveaFooterComponent/FoveaFooterComponent";
+import "../../Component/MaterialTrianglesComponent/MaterialTrianglesComponent";
 
 import {Page} from "../Page/Page";
 import {IHomePage} from "./Interface/IHomePage";
@@ -15,7 +17,11 @@ export class HomePage extends Page implements IHomePage {
 			<home-hero-element></home-hero-element>
 			<highlights-element></highlights-element>
 			<summary-element></summary-element>
-			<tools-element></tools-element>
+			<section id="bottom">
+				<material-triangles-element accent></material-triangles-element>
+				<tools-element></tools-element>
+				<fovea-footer-element></fovea-footer-element>
+			</section>
 		`;
 	}
 
@@ -25,12 +31,13 @@ export class HomePage extends Page implements IHomePage {
 				transform: translate3d(0, -40px, 0);
 			}
 			
-			#highlights-spacer {
-				display: block;
+			material-triangles-element {
+				top: auto;
+				bottom: 0;
+			}
+			
+			#bottom {
 				position: relative;
-				border: 1px solid red;
-				width: 100%;
-				height: 200px;
 			}
 		`;
 	}

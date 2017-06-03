@@ -45,6 +45,7 @@
     --color-primary-38: rgba(var(--_rgb-inner-primary), 0.38);
     --color-primary-26: rgba(var(--_rgb-inner-primary), 0.26);
     --color-primary-12: rgba(var(--_rgb-inner-primary), 0.12);
+    --color-primary-06: rgba(var(--_rgb-inner-primary), 0.06);
 
     --color-accent-120: rgb(var(--_rgb-inner-accent-darker));
     --color-accent-100: rgb(var(--_rgb-inner-accent));
@@ -55,6 +56,7 @@
     --color-accent-38: rgba(var(--_rgb-inner-accent), 0.38);
     --color-accent-26: rgba(var(--_rgb-inner-accent), 0.26);
     --color-accent-12: rgba(var(--_rgb-inner-accent), 0.12);
+    --color-accent-06: rgba(var(--_rgb-inner-accent), 0.06);
 
     --color-red-120: rgb(var(--_rgb-inner-red-darker));
     --color-red-100: rgb(var(--_rgb-inner-red));
@@ -131,6 +133,7 @@
 
     --distance-minimum: 16px;
     --distance-regular: 24px;
+    --distance-large: 34px;
 
     /* Duration */
     --duration-short: 100ms;
@@ -174,7 +177,6 @@
     --height-icon-larger: 61px;
     --height-icon-huge: 100px;
     --height-icon-extreme: 284px;
-    --height-hero: 615px;
 
     /* Rounding */
     --box-radius: 2px;
@@ -294,7 +296,7 @@ small, p, option, label, span, td, a {
 a {
     color: var(--color-primary-100);
     cursor: pointer;
-    transition: color var(--duration-medium) var(--easing-standard-curve);
+    transition: color var(--duration-short) var(--easing-standard-curve);
 }
 
 a:hover {

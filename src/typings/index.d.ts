@@ -14,10 +14,10 @@ declare interface TouchEvent {
 /* tslint:disable */
 declare interface CSSStyleDeclaration {
 	/* tslint:enable */
-	willChange: string | null;
-	contain: string | null;
-	webkitOverflowScrolling: string | null;
-	objectFit: string | null;
+	willChange: string|null;
+	contain: string|null;
+	webkitOverflowScrolling: string|null;
+	objectFit: string|null;
 }
 
 /* tslint:disable */
@@ -28,12 +28,12 @@ declare interface Document {
 
 /* tslint:disable */
 declare interface Window {
-	/* tslint:enable */
-	requestIdleCallback(callback: () => void): void;
 	XMLHttpRequest: XMLHttpRequest;
 	device?: { platform: string };
 	ActiveXObject?: string;
 	cordova: any;
+	/* tslint:enable */
+	requestIdleCallback(callback: () => void): void;
 }
 
 declare interface Node {

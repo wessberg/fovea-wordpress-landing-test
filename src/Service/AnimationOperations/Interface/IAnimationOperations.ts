@@ -11,10 +11,10 @@ export interface IKeyframeOptions {
 export interface IAnimationOptions {
 	delay?: number;
 	endDelay?: number;
-	fill?: "none" | "auto" | "forwards" | "backwards";
+	fill?: "none"|"auto"|"forwards"|"backwards";
 	iterationStart?: number;
 	iterations?: number;
 	duration?: number;
-	direction?: "normal" | "reverse" | "alternate" | "alternate-reverse";
+	direction?: "normal"|"reverse"|"alternate"|"alternate-reverse";
 	easing?: string;
 }

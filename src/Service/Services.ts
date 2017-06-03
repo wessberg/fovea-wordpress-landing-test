@@ -1,6 +1,6 @@
 import {IAnimationOperations} from "./AnimationOperations/Interface/IAnimationOperations";
 import {AnimationOperations} from "./AnimationOperations/AnimationOperations";
-import {IEventUtil, EventUtil} from "@wessberg/eventutil";
+import {EventUtil, IEventUtil} from "@wessberg/eventutil";
 import {IWaitOperations} from "./WaitOperations/Interface/IWaitOperations";
 import {WaitOperations} from "./WaitOperations/WaitOperations";
 import {ISvgIconUtil} from "./SvgIconUtil/Interface/ISvgIconUtil";

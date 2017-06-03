@@ -8,7 +8,7 @@ export interface IAgentDetector {
 	UCBrowserVersion: number;
 	androidVersion: number;
 	browser: BrowserKind;
-	nativePlatform: NativePlatformKind | null;
+	nativePlatform: NativePlatformKind|null;
 	browserVersion: number;
 	chromeVersion: number;
 	edgeVersion: number;

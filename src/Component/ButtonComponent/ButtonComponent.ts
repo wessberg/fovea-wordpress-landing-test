@@ -16,10 +16,6 @@ export class ButtonComponent extends Component implements IButtonComponent {
 		`;
 	}
 
-	protected connectedCallback (): void {
-		super.connectedCallback();
-	}
-
 	public static styles (): string {
 		return `
 
@@ -188,5 +184,9 @@ export class ButtonComponent extends Component implements IButtonComponent {
 			opacity: .6;
 		}
 		`;
+	}
+
+	protected connectedCallback (): void {
+		super.connectedCallback();
 	}
 }

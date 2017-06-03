@@ -1,5 +1,5 @@
 import {IComponent} from "../../Component/IComponent";
 
-export interface IToolsComponent extends IComponent {
+export interface IAppFooterComponent extends IComponent {
 
 }
