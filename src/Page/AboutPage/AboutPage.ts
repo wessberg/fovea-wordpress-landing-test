@@ -2,6 +2,7 @@ import "../../Component/FoveaFooterComponent/FoveaFooterComponent";
 import "../../Component/MaterialTrianglesComponent/MaterialTrianglesComponent";
 import "../../Component/AboutHeroComponent/AboutHeroComponent";
 import "../../Component/TTFMPComponent/TTFMPComponent";
+import "../../Component/BrowserSupportComponent/BrowserSupportComponent";
 
 import {Page} from "../Page/Page";
 import {selector} from "../../Component/Component/Component";
@@ -16,7 +17,8 @@ export class AboutPage extends Page implements IAboutPage {
 			<about-hero-element></about-hero-element>
 			<ttfmp-element></ttfmp-element>
 			<section id="bottom">
-				<material-triangles-element accent></material-triangles-element>
+				<material-triangles-element accent strong shifted></material-triangles-element>
+				<browser-support-element></browser-support-element>
 				<fovea-footer-element></fovea-footer-element>
 			</section>
 		`;

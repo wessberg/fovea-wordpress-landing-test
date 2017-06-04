@@ -24,22 +24,41 @@ export class MaterialTrianglesComponent extends Component implements IMaterialTr
 				fill: var(--color-black-02);
 			}
 			
+			:host([strong][dark]) icon-element {
+				fill: var(--color-black-06);
+			}
+			
 			:host([primary]) icon-element {
 				fill: var(--color-primary-06);
+			}
+			
+			:host([strong][primary]) icon-element {
+				fill: var(--color-primary-26);
 			}
 			
 			:host([accent]) icon-element {
 				fill: var(--color-accent-06);
 			}
 			
+			:host([strong][accent]) icon-element {
+				fill: var(--color-accent-26);
+			}
+			
 			:host([light]) icon-element {
 				fill: var(--color-white-12);
+			}
+			
+			:host([strong][light]) icon-element {
+				fill: var(--color-white-26);
 			}
 			
 			:host([warning]) icon-element {
 				fill: var(--color-red-12);
 			}
 			
+			:host([strong][warning]) icon-element {
+				fill: var(--color-red-26);
+			}
 			
 			icon-element {
 				width: 200vw;
@@ -61,6 +80,16 @@ export class MaterialTrianglesComponent extends Component implements IMaterialTr
 				top: -50vw;
 				left: -40vw;
 				transform: rotate(23deg) translateZ(0);
+			}
+			
+			:host([shifted]) #triangle1 {
+				top: -10vw;
+				left: -60vw;
+			}
+			
+			:host([shifted]) #triangle2 {
+				top: -40vw;
+				left: -7vw;
 			}
 		`;
 	}

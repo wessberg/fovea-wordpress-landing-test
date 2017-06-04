@@ -1,7 +1,7 @@
 import {Component, selector} from "../Component/Component";
 import {IHighlightsComponent} from "./Interface/IHighlightsComponent";
-import "../CardComponent/CardComponent";
 import "../IconComponent/IconComponent";
+import "../CardComponent/CardComponent";
 
 @selector("highlights-element")
 export class HighlightsComponent extends Component implements IHighlightsComponent {

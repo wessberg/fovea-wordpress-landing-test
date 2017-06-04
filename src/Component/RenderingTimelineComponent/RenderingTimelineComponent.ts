@@ -84,7 +84,7 @@ export class RenderingTimelineComponent extends Component implements IRenderingT
 			
 			hr.horizontal {
 				width: 31px;
-				height: 6px;
+				height: 4px;
 			}
 			
 			tr {
