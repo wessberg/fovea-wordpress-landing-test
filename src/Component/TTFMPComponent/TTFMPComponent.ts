@@ -1,7 +1,8 @@
-import {Component, selector} from "../Component/Component";
-import {ITTFMPComponent} from "./Interface/ITTFMPComponent";
 import "../TTFMPDescriptionComponent/TTFMPDescriptionComponent";
 import "../IconComponent/IconComponent";
+import "../RenderingTimelinesComponent/RenderingTimelinesComponent";
+import {Component, selector} from "../Component/Component";
+import {ITTFMPComponent} from "./Interface/ITTFMPComponent";
 
 @selector("ttfmp-element")
 export class TTFMPComponent extends Component implements ITTFMPComponent {
@@ -30,14 +31,13 @@ export class TTFMPComponent extends Component implements ITTFMPComponent {
 			
 			#browserFrameShadowIcon {
 				position: absolute;
-				top: 20px;
+				top: 10px;
 				width: 918px;
 				height: 887px;
-				max-width: 100%;
 				transform-origin: left top;
-				transform: rotate(45deg) translateZ(0);
+				transform: rotate(45deg) scaleY(4) translateZ(0);
 				z-index: 0;
-				left: 0;
+				left: 10px;
 				right: 0;
 				margin: 0 auto;
 				display: none;
@@ -47,7 +47,7 @@ export class TTFMPComponent extends Component implements ITTFMPComponent {
 				z-index: 1;
 			}
 			
-			@media screen and (min-width: 690px) {
+			@media screen and (min-width: 800px) {
 				#browserFrameShadowIcon {
 					display: block;
 				}
@@ -63,6 +63,7 @@ export class TTFMPComponent extends Component implements ITTFMPComponent {
 				<ttfmp-description-element></ttfmp-description-element>
 				<icon-element id="browserFrameShadowIcon" icon="material-rectangle"></icon-element>
 			</section>
+			<rendering-timelines-element></rendering-timelines-element>
 		`;
 	}
 }

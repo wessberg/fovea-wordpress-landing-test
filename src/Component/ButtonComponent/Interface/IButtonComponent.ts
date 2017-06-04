@@ -1,5 +1,5 @@
-import {IComponent} from "../../Component/IComponent";
+import {IRectangleItemComponent} from "../../RectangleItemComponent/Interface/IRectangleItemComponent";
 
-export interface IButtonComponent extends IComponent {
+export interface IButtonComponent extends IRectangleItemComponent {
 
 }
