@@ -1,7 +1,6 @@
 import {MediaComponent} from "../MediaComponent/MediaComponent";
 import {IImageComponent} from "./Interface/IImageComponent";
 import {selector} from "../Component/Component";
-import {eventUtil} from "../../Service/Services";
 
 @selector("image-element")
 export class ImageComponent extends MediaComponent implements IImageComponent {
@@ -16,12 +15,6 @@ export class ImageComponent extends MediaComponent implements IImageComponent {
 		return `
 		<img id="placeholderImage"/>
 		<img id="mainImage" />`;
-	}
-
-	protected connectedCallback (): void {
-		const placeholder = <HTMLImageElement> this.element("placeholderImage");
-		placeholder.addEventListener("click", () => this.onPlaceholderTapped());
-		placeholder.src = this.placeholderMedia;
 	}
 
 	public static styles (): string {
@@ -84,12 +77,25 @@ export class ImageComponent extends MediaComponent implements IImageComponent {
 		await this.load();
 	}
 
+	protected connectedCallback (): void {
+		const placeholder = <HTMLImageElement> this.element("placeholderImage");
+		placeholder.addEventListener("click", () => this.onPlaceholderTapped());
+		placeholder.src = this.placeholderMedia;
+	}
+
 	protected async loadMedia (media: string): Promise<void> {
 		const mainImage = <HTMLImageElement>this.element("mainImage");
 		mainImage.src = media;
-		const event = await eventUtil.waitForAny(["load", "error", "canplay"], mainImage);
 
-		event.type === "error" ? this.onLoadMediaFailedAction() : this.onLoadMediaSuccessAction();
+		mainImage.onload = () => {
+			(<any>mainImage).onload = null;
+			this.onLoadMediaSuccessAction();
+		};
+		mainImage.onerror = () => {
+			(<any>mainImage).onload = null;
+			this.onLoadMediaFailedAction();
+		};
+
 	}
 
 	protected async setInitialState (): Promise<void> {
