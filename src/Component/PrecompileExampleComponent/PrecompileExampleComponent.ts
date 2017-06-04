@@ -1,7 +1,8 @@
+import "../CodeComponent/CodeComponent";
+import "../IconComponent/IconComponent";
 import {Component, selector} from "../Component/Component";
 import {IPrecompileExampleComponent} from "./Interface/IPrecompileExampleComponent";
-import "../PrecompileCodeExampleComponent/PrecompileCodeExampleComponent";
-import "../IconComponent/IconComponent";
+import {PrecompileCodeExample} from "../../CodeExample/Precompile/Precompile";
 
 @selector("precompile-example-element")
 export class PrecompileExampleComponent extends Component implements IPrecompileExampleComponent {
@@ -25,7 +26,7 @@ export class PrecompileExampleComponent extends Component implements IPrecompile
 				margin: auto;		
 			}
 			
-			precompile-code-example-element {
+			code-element {
 				max-height: 150px;
 				margin: auto;
 				width: calc(100% - var(--width-icon-larger) - var(--distance-regular) );
@@ -38,7 +39,7 @@ export class PrecompileExampleComponent extends Component implements IPrecompile
 
 		return `
 			<icon-element icon="fovea-1" larger light></icon-element>
-			<precompile-code-example-element center></precompile-code-example-element>
+			<code-element center shadow>${PrecompileCodeExample}</code-element>
 		`;
 	}
 }

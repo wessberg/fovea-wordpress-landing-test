@@ -39,10 +39,9 @@ export class AppFooterComponent extends Component implements IAppFooterComponent
 				flex-wrap: wrap;
 				margin: auto;
 				flex-direction: row;
-				align-content: flex-start;
-				justify-content: flex-start;
+				align-content: space-around;
+				justify-content: space-around;
 				width: 100%;
-				
 			}
 			
 			.row {
@@ -66,10 +65,6 @@ export class AppFooterComponent extends Component implements IAppFooterComponent
 				order: 0;
 			}
 			
-			#logoSlot::slotted(*) {
-				margin: auto;
-			}
-			
 			.rowSlot::slotted(*) {
 				font-size: var(--font-size-caption) !important;
 			}
@@ -84,8 +79,20 @@ export class AppFooterComponent extends Component implements IAppFooterComponent
 			}
 			
 			#logoSlot::slotted(*) {
-					margin: auto 0 auto var(--distance-regular);
+				display: none;
+				margin: auto 0 auto var(--distance-regular);
+			}
+			
+			@media screen and (min-width: 415px) {
+				#logoSlot::slotted(*) {
+					display: block;
 				}
+				
+				#wrapper {
+					align-content: flex-start;
+					justify-content: flex-start;
+				}
+			}
 			
 			@media screen and (min-width: 677px) {
 				#wrapper {

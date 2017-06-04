@@ -1,4 +1,5 @@
 import {IComponent, IComponentConstructor} from "./IComponent";
+import {Resource} from "../../Static/Resource/Resource";
 
 export function selector (selector: string) {
 	return (prototype: IComponentConstructor) => {
@@ -8,7 +9,7 @@ export function selector (selector: string) {
 		if (styles == null && markup == null) return;
 
 		const actualStyles = styles == null ? "" : `
-		<link rel="stylesheet" href="${WP.templateUrl}/shared.css?ver=${WP.version}" />
+		<link rel="stylesheet" href="${Resource.path.sharedCss}?ver=${WP.version}" />
 		<style>${styles}</style>`;
 		const actualMarkup = markup == null ? "" : markup;
 

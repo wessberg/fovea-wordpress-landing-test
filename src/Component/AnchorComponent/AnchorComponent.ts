@@ -23,6 +23,7 @@ export class AnchorComponent extends Component implements IAnchorComponent {
 			
 			:host, a {
 				cursor: pointer;
+				user-select: text !important;
 			}
 
 			a {
@@ -38,12 +39,9 @@ export class AnchorComponent extends Component implements IAnchorComponent {
     		transition: color var(--duration-short) var(--easing-standard-curve);
 			}
 			
-			:host:hover, :host:focus {
-				var(--color-primary-120);
-			}
-			
+			:host:hover a, :host:focus a,
 			a:hover, a:focus {
-    		color: inherit;
+				color: var(--color-primary-120) !important;
 			}
 		`;
 	}

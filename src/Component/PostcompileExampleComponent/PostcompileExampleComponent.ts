@@ -1,7 +1,8 @@
+import "../CodeComponent/CodeComponent";
+import "../IconComponent/IconComponent";
 import {Component, selector} from "../Component/Component";
 import {IPostcompileExampleComponent} from "./Interface/IPostcompileExampleComponent";
-import "../PostcompileCodeExampleComponent/PostcompileCodeExampleComponent";
-import "../IconComponent/IconComponent";
+import {PostCompileCodeExample} from "../../CodeExample/Postcompile/Postcompile";
 
 @selector("postcompile-example-element")
 export class PostcompileExampleComponent extends Component implements IPostcompileExampleComponent {
@@ -25,7 +26,7 @@ export class PostcompileExampleComponent extends Component implements IPostcompi
 				margin: auto;		
 			}
 			
-			postcompile-code-example-element {
+			code-element {
 				max-height: 150px;
 				margin: auto;
 				width: calc(100% - var(--width-icon-larger) - var(--distance-regular) );
@@ -38,7 +39,7 @@ export class PostcompileExampleComponent extends Component implements IPostcompi
 
 		return `
 			<icon-element icon="fovea-2" larger light></icon-element>
-			<postcompile-code-example-element center></postcompile-code-example-element>
+			<code-element center shadow>${PostCompileCodeExample}</code-element>
 		`;
 	}
 }

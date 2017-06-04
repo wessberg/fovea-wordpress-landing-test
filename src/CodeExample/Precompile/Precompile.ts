@@ -1,22 +1,4 @@
-import {Component, selector} from "../Component/Component";
-import {IPrecompileCodeExampleComponent} from "./Interface/IPrecompileCodeExampleComponent";
-
-@selector("precompile-code-example-element")
-export class PrecompileCodeExampleComponent extends Component implements IPrecompileCodeExampleComponent {
-	public static styles () {
-		return `
-			code-element {
-				max-height: inherit;
-				max-width: inherit;
-				box-shadow: var(--shadow-level3);
-				text-align: left;
-			}
-		`;
-	}
-
-	public static markup () {
-		return `
-			<code-element><!--
+export const PrecompileCodeExample = `<!--
 		 --><pre class="token"><</pre><!--
 		 --><pre class="tagname">img</pre><!--
 		 --><pre> </pre><!--
@@ -66,7 +48,5 @@ export class PrecompileCodeExampleComponent extends Component implements IPrecom
 		 --><pre class="attribute_value">"mainImage"</pre><!--
 		 --><pre class="token">/</pre><!--
 		 --><pre class="token">></pre><!--
-	--></code-element>
-		`;
-	}
-}
+	-->
+`;

@@ -14,6 +14,10 @@ export class CodeComponent extends Component implements ICodeComponent {
 				margin-right: auto;
 				text-align: center;
 			}
+			
+			:host([shadow]) {
+				box-shadow: var(--shadow-level4);
+			}
 
 			:host {
 				background: var(--color-dark-hex);
@@ -26,10 +30,6 @@ export class CodeComponent extends Component implements ICodeComponent {
 				contain: content;
 				flex-direction: column;
 				text-align: left;
-			}
-			
-			scroll-element {
-				max-height: inherit;
 			}
 			
 			:host,

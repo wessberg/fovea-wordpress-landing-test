@@ -11,8 +11,7 @@ const getScript = (): HTMLScriptElement => {
 
 function addPolyfill (source: IPolyfill): void {
 	const script = getScript();
-	const normalizedPath = source.path.startsWith("/") ? source.path : `/${source.path}`;
-	script.src = `${WP.templateUrl}${normalizedPath}`;
+	script.src = source.path;
 	document.head.appendChild(script);
 }
 

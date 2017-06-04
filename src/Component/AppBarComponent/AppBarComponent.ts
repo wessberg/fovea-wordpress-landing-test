@@ -69,7 +69,6 @@ export class AppBarComponent extends Component implements IAppBarComponent {
 			
 			#titleSlot::slotted(*) {
 				order: 1;
-				display: none;
 			}
 	
 			#leftIconSlot::slotted(*) {
@@ -83,13 +82,6 @@ export class AppBarComponent extends Component implements IAppBarComponent {
 			.flexer {
 				flex-grow: 1;
 				order: 2;
-			}
-
-			@media screen and (min-width: 440px) {
-				#titleSlot::slotted(*) {
-					order: 1;
-					display: block;
-				}
 			}
 		`;
 	}

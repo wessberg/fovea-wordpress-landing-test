@@ -1,7 +1,8 @@
-import "../CodeExampleComponent/CodeExampleComponent";
 import "../AnchorComponent/AnchorComponent";
+import "../CodeComponent/CodeComponent";
 import {Component, selector} from "../Component/Component";
 import {IDataBindingExampleComponent} from "./Interface/IDataBindingExampleComponent";
+import {DataBindingCodeExample} from "../../CodeExample/DataBinding/DataBinding";
 
 @selector("data-binding-example-element")
 export class DataBindingExampleComponent extends Component implements IDataBindingExampleComponent {
@@ -15,7 +16,7 @@ export class DataBindingExampleComponent extends Component implements IDataBindi
 				max-width: var(--width-frame-max);
 				justify-content: center;
 				align-content: center;
-				display: inline-flex;
+				display: flex;
 				flex-direction: column;
 				margin: 0 auto;
 			}
@@ -35,10 +36,11 @@ export class DataBindingExampleComponent extends Component implements IDataBindi
 			}
 			
 			card-element,
-			code-example-element {
-				max-height: 450px;
+			code-element {
 				margin: var(--distance-minimum) auto;
 				width: 100%;
+				max-width: 369px;
+				height: 100%;
 			}
 			
 			@media screen and (min-width: 700px) {
@@ -46,19 +48,30 @@ export class DataBindingExampleComponent extends Component implements IDataBindi
 				:host {
 					flex-direction: row;
 				}
-				
+
 				card-element,
-				code-example-element {
-					margin: var(--distance-minimum) 0;
+				code-element {
+					margin: 0 var(--distance-minimum);
+					height: 500px;
+					max-width: calc((100% / 2) - (var(--distance-minimum) * 2));
 				}
 			}
+			
+			@media screen and (min-width: 825px) {
+	
+				card-element,
+				code-element {
+					max-height: 450px;
+				}
+			}
+
 		`;
 	}
 
 	public static markup (): string {
 
 		return `
-			<code-example-element></code-example-element>
+			<code-element shadow>${DataBindingCodeExample}</code-element>
 			<card-element>
 				<h6>Data-binding has never been easier</h6>
 				<p>

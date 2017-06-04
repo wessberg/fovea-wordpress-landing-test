@@ -1,26 +1,4 @@
-import {Component, selector} from "../Component/Component";
-import {ICodeExampleComponent} from "./Interface/ICodeExampleComponent";
-import "../CodeComponent/CodeComponent";
-
-@selector("code-example-element")
-export class CodeExampleComponent extends Component implements ICodeExampleComponent {
-
-	public static styles () {
-		return `
-			code-element {
-				position: relative;
-				width: 100%;
-				max-width: 369px;
-				max-height: inherit;
-				margin: auto;
-				box-shadow: var(--shadow-level3);
-			}
-		`;
-	}
-
-	public static markup () {
-		return `
-			<code-element><!--
+export const DataBindingCodeExample = `<!--
 		 --><pre class="keyword">class</pre><!--
 		 --><pre> </pre><!--
 		 --><pre class="identifier">MyView</pre><!--
@@ -188,7 +166,5 @@ export class CodeExampleComponent extends Component implements ICodeExampleCompo
 		 --><pre class="brace">}</pre><!--
 		 --><br><!--
 		 --><pre class="brace">}</pre><!--
-	--></code-element>
-		`;
-	}
-}
+	-->
+`;

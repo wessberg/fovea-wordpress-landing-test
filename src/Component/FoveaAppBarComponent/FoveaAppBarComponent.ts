@@ -22,18 +22,43 @@ export class FoveaAppBarComponent extends Component implements IFoveaAppBarCompo
 			#githubItem {
 				width: 46px;
 				margin-left: var(--distance-minimum);
+				display: none;
 			}
 			
 			#logoItem {
-				width: 110px;
+				margin-left: var(--distance-minimum);
+				width: 46px;
 			}
 			
-			#logoItem > icon-element {
-				margin-right: var(--distance-minimum);
+			#logoItem > p {
+				display: none;
 			}
 			
 			app-bar-item-element {
 				width: 80px;
+			}
+			
+			@media screen and (min-width: 427px) {
+				#githubItem {
+					display: block;
+				}
+			}
+			
+			
+			@media screen and (min-width: 440px) {
+			
+				#logoItem {
+					width: 110px;
+					margin-left: 0;
+				}
+				
+				#logoItem > p {
+					display: block;
+				}
+				
+				#logoItem > icon-element {
+					margin-right: var(--distance-minimum);
+				}
 			}
 		`;
 	}
