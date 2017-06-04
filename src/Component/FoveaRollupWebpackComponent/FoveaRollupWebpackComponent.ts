@@ -20,6 +20,26 @@ export class FoveaRollupWebpackComponent extends Component implements IFoveaRoll
 				line-height: 1.2;
 				padding: 0 10px;
 			}
+			
+			icon-element {
+				width: var(--height-icon-large);
+				height: var(--width-icon-large);
+			}
+			
+			h3 {
+    			font-size: var(--font-size-display1);
+				}
+			
+			@media screen and (min-width: 367px) {
+				icon-element {
+					width: var(--height-icon-larger);
+					height: var(--width-icon-larger);
+				}
+				
+				h3 {
+    			font-size: var(--font-size-display2);
+				}
+			}
 		`;
 	}
 

@@ -10,6 +10,8 @@
     --_rgb-inner-accent: 254, 192, 7;
     --_rgb-inner-accent-darker: 226, 171, 7;
     --_rgb-inner-red: 221, 44, 0;
+    --_rgb-inner-blue: 3, 169, 243;
+    --_rgb-inner-blue-darker: 2, 159, 229;
     --_rgb-inner-red-darker: 198, 40, 1;
 
     /* -- Public colors -- */
@@ -67,6 +69,18 @@
     --color-red-38: rgba(var(--_rgb-inner-red), 0.38);
     --color-red-26: rgba(var(--_rgb-inner-red), 0.26);
     --color-red-12: rgba(var(--_rgb-inner-red), 0.12);
+    --color-red-06: rgba(var(--_rgb-inner-red), 0.06);
+
+    --color-blue-120: rgb(var(--_rgb-inner-blue-darker));
+    --color-blue-100: rgb(var(--_rgb-inner-blue));
+    --color-blue-87: rgba(var(--_rgb-inner-blue), 0.87);
+    --color-blue-70: rgba(var(--_rgb-inner-blue), 0.70);
+    --color-blue-54: rgba(var(--_rgb-inner-blue), 0.54);
+    --color-blue-50: rgba(var(--_rgb-inner-blue), 0.50);
+    --color-blue-38: rgba(var(--_rgb-inner-blue), 0.38);
+    --color-blue-26: rgba(var(--_rgb-inner-blue), 0.26);
+    --color-blue-12: rgba(var(--_rgb-inner-blue), 0.12);
+    --color-blue-06: rgba(var(--_rgb-inner-blue), 0.06);
 
     --color-primary-text-dark: var(--color-black-87);
     --color-secondary-text-dark: var(--color-black-54);
@@ -164,6 +178,7 @@
     --width-icon-larger: 61px;
     --width-icon-huge: 100px;
     --width-icon-extreme: 284px;
+    --width-icon-brutal: 712px;
     --width-frame-max: 830px;
 
     /* Height */
@@ -177,6 +192,7 @@
     --height-icon-larger: 61px;
     --height-icon-huge: 100px;
     --height-icon-extreme: 284px;
+    --height-icon-brutal: 712px;
 
     /* Rounding */
     --box-radius: 2px;
@@ -300,44 +316,42 @@ td {
     color: var(--color-primary-text-dark);
 }
 
+h1, h2, h3, h4, h5, h6 {
+    line-height: var(--line-height-body);
+}
+
 h1 {
     font-size: var(--font-size-display4);
-    line-height: var(--font-size-display4);
     font-weight: var(--font-weight-display4);
     color: var(--color-display4-dark);
 }
 
 h2 {
     font-size: var(--font-size-display3);
-    line-height: var(--font-size-display3);
     font-weight: var(--font-weight-display3);
     color: var(--color-display3-dark);
 }
 
 h3 {
     font-size: var(--font-size-display2);
-    line-height: var(--font-size-display2);
     font-weight: var(--font-weight-display2);
     color: var(--color-display2-dark);
 }
 
 h4 {
     font-size: var(--font-size-display1);
-    line-height: var(--font-size-display1);
     font-weight: var(--font-weight-display1);
     color: var(--color-display1-dark);
 }
 
 h5 {
     font-size: var(--font-size-headline);
-    line-height: var(--font-size-headline);
     font-weight: var(--font-weight-headline);
     color: var(--color-headline-dark);
 }
 
 h6 {
     font-size: var(--font-size-title);
-    line-height: var(--font-size-title);
     font-weight: var(--font-weight-title);
     color: var(--color-title-dark);
 }

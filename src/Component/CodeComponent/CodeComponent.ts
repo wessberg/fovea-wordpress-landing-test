@@ -22,6 +22,8 @@ export class CodeComponent extends Component implements ICodeComponent {
 			:host {
 				background: var(--color-dark-hex);
 				border-radius: var(--box-radius);
+				transform: translate3d(0,0,0);
+				backface-visibility: hidden;
 				margin: 0;
 				padding: var(--distance-minimum);
 				width: auto;

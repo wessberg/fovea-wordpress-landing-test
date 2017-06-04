@@ -78,3 +78,15 @@ export const MATERIAL_TRIANGLE: IIcon = {
 	viewBox: "0 0 100 100",
 	template: `<path fill-rule="evenodd" d="M50 0l50 100H0"/>`
 };
+
+export const MATERIAL_RECTANGLE: IIcon = {
+	selector: "material-rectangle",
+	viewBox: "0 0 919 887",
+	template: `<path fill-rule="evenodd" d="M247.8 15.8H671v855.5H248z" opacity=".1"/>`
+};
+
+export const BROWSER_FRAME: IIcon = {
+	selector: "browser-frame",
+	viewBox: "0 0 712 402",
+	template: `<g fill="none"><path fill="#ECF0F1" d="M0 69.5h711.8v329.7c0 1-1 2-2 2H2c-1 0-2-1-2-2V69.5z"/><path fill="#546A79" d="M0 2c0-1 1-2 2-2h707.8c1 0 2 1 2 2v67.5H0V2z"/><g transform="translate(19 19)"><ellipse cx="15.8" cy="15.7" fill="#ED7161" rx="14.9" ry="14.9"/><ellipse cx="60.4" cy="15.7" fill="#EFC41A" rx="14.9" ry="14.9"/><ellipse cx="105.1" cy="15.7" fill="#4FBA6E" rx="14.9" ry="14.9"/></g></g>`
+};

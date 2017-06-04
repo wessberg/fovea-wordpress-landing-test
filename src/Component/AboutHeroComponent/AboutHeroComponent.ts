@@ -100,6 +100,7 @@ export class AboutHeroComponent extends Component implements IAboutHeroComponent
 			.headline {
 				color: var(--color-primary-text-light);
 				font-weight: var(--font-weight-bold);
+				line-height: 1;
 			}
 			
 			.headline,
@@ -164,8 +165,6 @@ export class AboutHeroComponent extends Component implements IAboutHeroComponent
 
 				card-element {
 					margin: 0 var(--distance-minimum);
-		
-					/*max-width: calc((100% / 2) - (var(--distance-minimum) * 2));*/
 				}
 			}
 

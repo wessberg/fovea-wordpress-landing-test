@@ -27,6 +27,7 @@ export class SummaryComponent extends Component implements ISummaryComponent {
 			h4, h5 {
 				padding-top: var(--distance-regular);
 				color: var(--color-primary-text-light);
+				user-select: text;
 			}
 			
 			

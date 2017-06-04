@@ -40,6 +40,11 @@ export class HomeHeroComponent extends Component implements IHomeHeroComponent {
 			
 			h3 {
 				font-weight: var(--font-weight-bold);
+				line-height: 1;
+			}
+			
+			h5 {
+				padding: 0 var(--distance-minimum);
 			}
 			
 			code-element {
