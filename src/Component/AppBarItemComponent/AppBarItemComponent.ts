@@ -39,6 +39,14 @@ export class AppBarItemComponent extends Component implements IAppBarItemCompone
 				height: 3px;
 				background-color: var(--color-primary-text-light);
 			}
+			
+			:host([no-underline]) {
+				padding-top: 0;
+			}
+			
+			:host([no-underline]) hr {
+				display: none;
+			}
 		`;
 	}
 

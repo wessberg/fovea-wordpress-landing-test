@@ -34,12 +34,10 @@ export class Page extends ScrollComponent implements IPage {
 
 	public async didBecomeVisible (): Promise<void> {
 		this.setAttribute("visible", "");
-		// console.log(this.constructor.name, "became visible");
 	}
 
 	public async didBecomeInvisible (): Promise<void> {
 		if (this.hasAttribute("visible")) this.removeAttribute("visible");
-		// console.log(this.constructor.name, "became invisible");
 	}
 
 	public async animateIn (): Promise<void> {

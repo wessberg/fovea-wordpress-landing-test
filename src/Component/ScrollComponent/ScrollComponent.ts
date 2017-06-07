@@ -67,7 +67,7 @@ export class ScrollComponent extends Component implements IScrollComponent {
 		}
 	}
 
-	public async connectedCallback (): Promise<void> {
+	protected async connectedCallback (): Promise<void> {
 		super.connectedCallback();
 		this.listenForScrollTarget(this);
 		await this.connectScroller();

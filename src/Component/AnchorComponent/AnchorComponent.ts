@@ -62,14 +62,14 @@ export class AnchorComponent extends Component implements IAnchorComponent {
 		this.listenForClicks();
 	}
 
-	private onClicked (e: MouseEvent): void {
+	private async onClicked (e: MouseEvent): Promise<void> {
 		if (this.opensInNewWindow) return;
 
 		e.preventDefault();
 		e.stopPropagation();
 
 		const href = this.getAttribute("href");
-		if (href != null) navigationUtil.navigate(href);
+		if (href != null) await navigationUtil.navigate(href);
 	}
 
 	private listenForClicks (): void {

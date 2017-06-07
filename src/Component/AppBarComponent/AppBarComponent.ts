@@ -64,24 +64,28 @@ export class AppBarComponent extends Component implements IAppBarComponent {
 			}
 			
 			#menuItemSlot::slotted(*) {
-				order: 3;
+				order: 4;
 			}
 			
 			#titleSlot::slotted(*) {
-				order: 1;
+				order: 2;
+			}
+			
+			#menuIconSlot::slotted(*) {
+				order: 0;
 			}
 	
 			#leftIconSlot::slotted(*) {
-				order: 0;
+				order: 1;
 			}
 			
 			#rightIconSlot::slotted(*) {
-				order: 4;
+				order: 5;
 			}
 			
 			.flexer {
 				flex-grow: 1;
-				order: 2;
+				order: 3;
 			}
 		`;
 	}
@@ -90,6 +94,7 @@ export class AppBarComponent extends Component implements IAppBarComponent {
 		return `
 			
 			<section id="menuItems">
+				<slot id="menuIconSlot" name="menuIcon"></slot>
 				<slot id="leftIconSlot" class="iconSlot" name="leftIcon"></slot>
 				<slot id="titleSlot" name="title"></slot>
 				<div class="flexer"></div>

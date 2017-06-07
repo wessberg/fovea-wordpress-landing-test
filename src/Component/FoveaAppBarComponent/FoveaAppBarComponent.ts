@@ -6,11 +6,12 @@ import "../ButtonComponent/ButtonComponent";
 
 import {Component, selector} from "../Component/Component";
 import {IFoveaAppBarComponent} from "./Interface/IFoveaAppBarComponent";
-import {wordpressPageStore} from "../../Service/Services";
+import {eventUtil, wordpressPageStore} from "../../Service/Services";
 import {IAppBarComponent} from "../AppBarComponent/Interface/IAppBarComponent";
 import {IWordpressPage} from "../../Model/WordpressPage/Interface/IWordpressPage";
 import {IAppBarItemComponent} from "../AppBarItemComponent/Interface/IAppBarItemComponent";
 import {IAnchorComponent} from "../AnchorComponent/Interface/IAnchorComponent";
+import {EventName} from "../../Static/EventName/EventName";
 
 @selector("fovea-app-bar-element")
 export class FoveaAppBarComponent extends Component implements IFoveaAppBarComponent {
@@ -18,16 +19,22 @@ export class FoveaAppBarComponent extends Component implements IFoveaAppBarCompo
 
 	public static styles (): string {
 		return `
+
+			#menuItem, #githubItem, #logoItem {
+				width: 46px;
+			}
+			
+			#githubItem, #logoItem {
+				margin-left: 0;
+			}
+			
 		
 			#githubItem {
-				width: 46px;
-				margin-left: var(--distance-minimum);
 				display: none;
 			}
 			
-			#logoItem {
-				margin-left: var(--distance-minimum);
-				width: 46px;
+			:host(:not([menu])) #menuItem {
+				display: none;
 			}
 			
 			#logoItem > p {
@@ -35,11 +42,30 @@ export class FoveaAppBarComponent extends Component implements IFoveaAppBarCompo
 			}
 			
 			app-bar-item-element {
-				width: 80px;
+				width: 60px;
+			}
+			
+			@media screen and (min-width: 368px) {
+			
+				app-bar-item-element {
+					width: 80px;
+				}
+				
+				#githubItem, #logoItem {
+					margin-left: var(--distance-minimum);
+				}
 			}
 			
 			@media screen and (min-width: 427px) {
-				#githubItem {
+			
+				:host(:not([menu])) #githubItem {
+					display: block;
+				}
+			}
+			
+			@media screen and (min-width: 507px) {
+			
+				:host([menu]) #githubItem {
 					display: block;
 				}
 			}
@@ -47,25 +73,45 @@ export class FoveaAppBarComponent extends Component implements IFoveaAppBarCompo
 			
 			@media screen and (min-width: 440px) {
 			
-				#logoItem {
+				:host(:not([menu])) #logoItem {
 					width: 110px;
 					margin-left: 0;
 				}
 				
-				#logoItem > p {
-					display: block;
-				}
-				
-				#logoItem > icon-element {
+				:host(:not([menu])) #logoItem > icon-element {
 					margin-right: var(--distance-minimum);
 				}
+				
+				:host(:not([menu])) #logoItem > p {
+					display: block;
+				}
 			}
+			
+			@media screen and (min-width: 520px) {
+			
+				:host([menu]) #logoItem {
+					width: 110px;
+					margin-left: 0;
+				}
+				
+				:host([menu]) #logoItem > icon-element {
+					margin-right: var(--distance-minimum);
+				}
+				
+				:host([menu]) #logoItem > p {
+					display: block;
+				}
+			}
+			
 		`;
 	}
 
 	public static markup (): string {
 		return `
 			<app-bar-element primary>
+				<app-bar-item-element id="menuItem" slot="menuIcon" round no-underline>
+						<icon-element icon="menu" light medium></icon-element>
+				</app-bar-item-element>
 				<anchor-element href="/" target="_self" slot="title">
 					<app-bar-item-element id="logoItem" large-text>
 						<icon-element icon="fovea-logo" light medium></icon-element>
@@ -84,6 +130,7 @@ export class FoveaAppBarComponent extends Component implements IFoveaAppBarCompo
 	protected connectedCallback (): void {
 		super.connectedCallback();
 		this.addPages();
+		this.listenForMenuEvents();
 	}
 
 	private getMenuItem (page: IWordpressPage): IAnchorComponent {
@@ -103,6 +150,25 @@ export class FoveaAppBarComponent extends Component implements IFoveaAppBarCompo
 	private addPages (): void {
 		const appBar = <IAppBarComponent> this.element("app-bar-element");
 		wordpressPageStore.pages.forEach(page => appBar.appendChild(this.getMenuItem(page)));
+	}
+
+	private listenForMenuEvents (): void {
+		console.log("began listening");
+		eventUtil.listen(this, EventName.CLICK, this.element("menuItem"), this.onMenuClicked);
+		eventUtil.listen(this, EventName.SHOW_MENU_ICON, window, this.onMenuItemShow);
+		eventUtil.listen(this, EventName.HIDE_MENU_ICON, window, this.onMenuItemHide);
+	}
+
+	private onMenuItemShow (): void {
+		if (!this.hasAttribute("menu")) this.setAttribute("menu", "");
+	}
+
+	private onMenuItemHide (): void {
+		if (this.hasAttribute("menu")) this.removeAttribute("menu");
+	}
+
+	private onMenuClicked (): void {
+		eventUtil.fire(EventName.MENU_ICON_CLICKED, window);
 	}
 
 }
