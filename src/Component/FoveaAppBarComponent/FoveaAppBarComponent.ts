@@ -153,7 +153,6 @@ export class FoveaAppBarComponent extends Component implements IFoveaAppBarCompo
 	}
 
 	private listenForMenuEvents (): void {
-		console.log("began listening");
 		eventUtil.listen(this, EventName.CLICK, this.element("menuItem"), this.onMenuClicked);
 		eventUtil.listen(this, EventName.SHOW_MENU_ICON, window, this.onMenuItemShow);
 		eventUtil.listen(this, EventName.HIDE_MENU_ICON, window, this.onMenuItemHide);

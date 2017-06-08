@@ -1,7 +1,7 @@
 import "./Polyfill/Loader";
 import {SvgIconUtil} from "./Service/SvgIconUtil/SvgIconUtil";
 import {BRAVE_LOGO, BROWSER_FRAME, CHROME_LOGO, EDGE_LOGO, FIREFOX_LOGO, FOVEA_1_ICON, FOVEA_2_ICON, FOVEA_FAST_ICON, FOVEA_INTUITIVE_ICON, FOVEA_LOGO_ICON, FOVEA_TINY_ICON, GITHUB_LOGO, IE_LOGO, MATERIAL_RECTANGLE, MATERIAL_TRIANGLE, MEDIUM_LOGO, NPM_LOGO, ROLLUP_LOGO, SAFARI_LOGO, TWITTER_LOGO, TYPESCRIPT_LOGO, WEBPACK_LOGO} from "./Asset/Icon/Product/ProductIcons";
-import {HEART_FILL, MENU} from "./Asset/Icon/Standard/MaterialIcons";
+import {HEART_FILL, MENU, PAPER_FILL, SHARE} from "./Asset/Icon/Standard/MaterialIcons";
 import {agentDetector, globalEventBlocker} from "./Service/Services";
 
 // Set up icons
@@ -19,8 +19,10 @@ SvgIconUtil.addIcons([
 	GITHUB_LOGO,
 	NPM_LOGO,
 	TWITTER_LOGO,
+	SHARE,
 	MEDIUM_LOGO,
 	MENU,
+	PAPER_FILL,
 	HEART_FILL,
 	MATERIAL_TRIANGLE,
 	MATERIAL_RECTANGLE,

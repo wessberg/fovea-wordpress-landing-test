@@ -17,7 +17,42 @@
 	<?php wp_localize_script( 'elements', 'WP', array(
 	    'templateUrl' => get_bloginfo('template_url'),
 	    'version' => get_bloginfo('version'),
-	    'pages' =>  get_pages()
+	    'pages' =>  get_pages(),
+	    'posts' => array_map(function ($post) {
+	                // Cast the value to an array so we can extend its properties
+        	        $castPost = (array)$post;
+
+        	        $date = date('F j, Y', strtotime($post->post_date));
+        	        $castPost['post_date'] = $date;
+
+                    // Take the featured image from the post (if it has one)
+        	        if (has_post_thumbnail($post->ID)) {
+        	            $featured_image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' )[0];
+        	            $castPost['image'] = $featured_image;
+        	        }
+
+        	        // Take the post categories and add them to the object.
+        	        $categories = array_map(function ($category) {return $category->cat_name;}, get_the_category($post->ID));
+        	        $castPost['categories'] = $categories;
+
+                    // Loop through the users to find the author.
+        	        foreach (get_users() as $user) {
+
+        	            // If the current user is the post author
+        	            if ($user->ID == $post->post_author) {
+
+        	                // Cast the value to an array so we can extend its properties
+                            $castUser = (array)$user -> data;
+                            // Get the avatar for the user
+                            $castUser['avatar'] = get_avatar_url($user->ID);
+                            // Bind it to the post
+                            $castPost['author'] = (object)$castUser;
+        	            }
+        	        }
+
+        	        // Return the contents (as an object).
+        	        return (object)$castPost;
+        	    }, get_posts())
 	    ));
 	?>
 	<style>

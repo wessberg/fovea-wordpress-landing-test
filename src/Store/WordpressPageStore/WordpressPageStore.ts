@@ -1,6 +1,6 @@
-import {Store} from "../Store";
+import {Store} from "../Store/Store";
 import {IWordpressPageStore} from "./Interface/IWordpressPageStore";
-import {IWordpressPage} from "../../../Model/WordpressPage/Interface/IWordpressPage";
+import {IWordpressPage} from "../../Model/WordpressPage/Interface/IWordpressPage";
 
 export class WordpressPageStore extends Store implements IWordpressPageStore {
 	public pages: IWordpressPage[] = this.formatWordpressPages();

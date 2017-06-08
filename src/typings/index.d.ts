@@ -5,10 +5,28 @@ declare interface WPPage {
 	post_type: string;
 }
 
+declare interface WPPost {
+	post_title: string;
+	post_content: string;
+	post_name: string;
+	post_date: string;
+	post_type: string;
+	categories: string[];
+	image: string;
+	author: WPUser;
+}
+
+declare interface WPUser {
+	avatar: string;
+	display_name: string;
+	user_email: string;
+}
+
 declare interface WPDict {
 	templateUrl: string;
 	version: string;
 	pages: WPPage[];
+	posts: WPPost[];
 }
 
 declare const WP: WPDict;

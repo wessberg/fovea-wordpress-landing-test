@@ -69,7 +69,6 @@ export class FocusableComposite extends Component implements IComposite {
 	}
 
 	private fireClickEventOnActionTarget (): void {
-		console.log(this.target, this.actionTarget);
 		if (this.target == null || this.actionTarget == null) return;
 		this.target.focus();
 		const event = new MouseEvent("click");

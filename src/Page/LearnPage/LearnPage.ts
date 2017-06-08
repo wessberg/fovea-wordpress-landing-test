@@ -5,6 +5,7 @@ import "../../Component/AnchorComponent/AnchorComponent";
 import "../../Component/AppDrawerSectionComponent/AppDrawerSectionComponent";
 import "../../Component/IconComponent/IconComponent";
 import "../../Component/ButtonComponent/ButtonComponent";
+import "../../Component/SocialLinksComponent/SocialLinksComponent";
 
 import {Page} from "../Page/Page";
 import {selector} from "../../Component/Component/Component";
@@ -62,28 +63,7 @@ export class LearnPage extends Page implements ILearnPage {
 						<h4>Coming soon</h4>
 						<h6>Documentation is still being written</h6>
 						<h6>Read more on</h6>
-						<section id="social">
-							<anchor-element href="https://twitter.com/FredWessberg" target="_blank">
-								<button-element no-background round>
-									<icon-element icon="twitter-logo"></icon-element>
-								</button-element>
-							</anchor-element>
-							<anchor-element href="https://github.com/wessberg" target="_blank">
-								<button-element no-background round>
-									<icon-element icon="github-logo"></icon-element>
-								</button-element>
-							</anchor-element>
-							<anchor-element href="https://medium.com/@FredWessberg" target="_blank">
-								<button-element no-background round>
-									<icon-element icon="medium-logo"></icon-element>
-								</button-element>
-							</anchor-element>
-							<anchor-element href="https://npmjs.com/~wessberg" target="_blank">
-								<button-element no-background round>
-									<icon-element icon="npm-logo"></icon-element>
-								</button-element>
-							</anchor-element>
-						</section>
+						<social-links-element></social-links-element>
 					</header>
 				</main>
 			</app-drawer-element>
@@ -123,21 +103,6 @@ export class LearnPage extends Page implements ILearnPage {
 				margin-top: 100px;
 				color: var(--color-black-54);
 			}
-			
-			#social {
-				display: flex;
-				flex-direction: row;
-			}
-			
-			#social > anchor-element {
-				margin-right: var(--distance-regular);
-			}
-			
-			#social > anchor-element > button-element {
-				width: var(--width-icon-medium);
-				height: var(--height-icon-medium);
-			}
-			
 			
 		`;
 	}

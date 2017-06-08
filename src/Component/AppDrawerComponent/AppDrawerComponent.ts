@@ -25,6 +25,7 @@ export class AppDrawerComponent extends Component implements IAppDrawerComponent
 			:host {
 				position: relative;
 				width: 100%;
+				min-height: 100%;
 				display: block;
 				transform: translate3d(-200px, 0, 0);
 			}
