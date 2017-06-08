@@ -2,6 +2,7 @@ import typescriptPlugin from "rollup-plugin-typescript2";
 import nodeResolve from "rollup-plugin-node-resolve";
 import babili from "rollup-plugin-babili";
 import EnvironmentPlugin from "@wessberg/rollup-plugin-environment";
+import Styler from "./Tool/Compiled/Styler";
 import gzip from "rollup-plugin-gzip";
 import {Config} from "@wessberg/environment";
 
@@ -32,11 +33,12 @@ const PRODUCTION_PLUGINS = Config.PRODUCTION ? [
 
 export default {
 	entry: "index.ts",
-	dest: `../lib/elements.js`,
+	dest: `../lib/elements.${Config.MOBILE ? "mobile" : "desktop"}.js`,
 	moduleName: "fovea",
 	format: "iife",
 	sourceMap: false,
 	plugins: [
+		Styler(),
 		EnvironmentPlugin(),
 		typescriptPlugin(),
 		nodeResolve({

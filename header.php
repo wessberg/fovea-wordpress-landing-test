@@ -11,7 +11,8 @@
 	<?php wp_enqueue_style( 'shared', get_stylesheet_directory_uri() . '/shared.css' ); ?>
 
 	<!-- Add '/lib/elements.js' -->
-	<?php wp_enqueue_script( 'elements', get_template_directory_uri() . '/lib/elements.js' ); ?>
+	<?php
+	    wp_enqueue_script( 'elements', get_template_directory_uri() . (wp_is_mobile() ? '/lib/elements.mobile.js' : '/lib/elements.desktop.js') );?>
 
 	<!-- Add the URL to the template path as a Javascript object for consumption inside the elements bundle. -->
 	<?php wp_localize_script( 'elements', 'WP', array(

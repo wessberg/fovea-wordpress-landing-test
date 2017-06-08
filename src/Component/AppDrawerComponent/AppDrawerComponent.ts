@@ -5,6 +5,7 @@ import {EventName} from "../../Static/EventName/EventName";
 
 @selector("app-drawer-element")
 export class AppDrawerComponent extends Component implements IAppDrawerComponent {
+	public static readonly ALWAYS_OPEN_THRESHOLD = 600;
 	private static readonly IN_DURATION = 225;
 	private static readonly OUT_DURATION = 195;
 	private static readonly IN_EASING = "cubic-bezier(0.4, 0.0, 0.2, 1)";
@@ -75,7 +76,9 @@ export class AppDrawerComponent extends Component implements IAppDrawerComponent
 	}
 
 	private onClicked (): void {
-		if (this.hasAttribute("open")) this.removeAttribute("open");
+		if (window.innerWidth < AppDrawerComponent.ALWAYS_OPEN_THRESHOLD && this.hasAttribute("open")) {
+			if (this.hasAttribute("open")) this.removeAttribute("open");
+		}
 	}
 
 

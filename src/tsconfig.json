@@ -30,6 +30,8 @@
     ],
     "baseUrl": ".",
     "paths": {
+      "postcss": ["./typings/index.d.ts"],
+      "magic-string": ["./typings/index.d.ts"],
       "tslib": [
         "node_modules/tslib/tslib.d.ts"
       ]

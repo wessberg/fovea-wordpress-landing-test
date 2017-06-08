@@ -37,6 +37,7 @@ export class AppBarItemComponent extends Component implements IAppBarItemCompone
 				display: block;
 				position: relative;
 				height: 3px;
+				transform: translate3d(0, 5px, 0);
 				background-color: var(--color-primary-text-light);
 			}
 			

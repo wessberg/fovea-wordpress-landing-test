@@ -1,6 +1,6 @@
 import "../../Component/FoveaFooterComponent/FoveaFooterComponent";
 import "../../Component/MaterialTrianglesComponent/MaterialTrianglesComponent";
-import "../../Component/AppDrawerComponent/AppDrawerComponent";
+import {AppDrawerComponent} from "../../Component/AppDrawerComponent/AppDrawerComponent";
 import "../../Component/AnchorComponent/AnchorComponent";
 import "../../Component/AppDrawerSectionComponent/AppDrawerSectionComponent";
 import "../../Component/IconComponent/IconComponent";
@@ -16,7 +16,7 @@ import {EventName} from "../../Static/EventName/EventName";
 @selector("learn-page-element")
 export class LearnPage extends Page implements ILearnPage {
 	public static routeName = /\/learn/;
-	private static readonly ALWAYS_OPEN_THRESHOLD = 600;
+
 
 	public static markup (): string {
 		return `
@@ -126,7 +126,7 @@ export class LearnPage extends Page implements ILearnPage {
 	}
 
 	private onResize () {
-		if (window.innerWidth < LearnPage.ALWAYS_OPEN_THRESHOLD) {
+		if (window.innerWidth < AppDrawerComponent.ALWAYS_OPEN_THRESHOLD) {
 			this.closeMenu();
 			this.showMenuIcon();
 		} else {

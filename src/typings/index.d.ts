@@ -65,3 +65,9 @@ declare interface Window {
 declare interface Node {
 	getRootNode (): ShadowRoot;
 }
+
+declare module "postcss";
+declare module "postcss-hover";
+declare module "postcss-cssnext";
+declare module "magic-string";
+declare module "cssnano";
