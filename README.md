@@ -8,7 +8,7 @@
 
 This page is live at [https://www.itu.dk/people/frra/fovea](https://www.itu.dk/people/frra/fovea)
 
-A clickable mockup is also live at [https://www.itu.dk/people/frra/fovea](https://www.itu.dk/people/frra/fovea-clickable)
+A clickable mockup is also live at [https://www.itu.dk/people/frra/fovea-clickable](https://www.itu.dk/people/frra/fovea-clickable)
 
 ## Disclaimer
 
@@ -36,6 +36,7 @@ so **for the best experience, use Chrome or Opera**.
 ## Installation
 
 1. Move this theme inside your Wordpress themes folder (`/wp/wp-content/themes/`)
+2. Make sure to host your site on HTTPS.
 
 ## Usage
 
@@ -55,6 +56,8 @@ If you want to build it yourself:
 
 1. Go to the folder `/src` inside the theme.
 2. Write `npm install` from the terminal and press enter.
+
+You need to serve your Wordpress server via HTTPS.
 
 You can now use the npm scripts for building and watching. Here are some of the things
 you can do:
