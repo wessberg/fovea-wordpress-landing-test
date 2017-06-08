@@ -2,15 +2,7 @@
 
 > Author: Frederik Wessberg (frra@itu.dk), June 2017.
 
-<svg xmlns="http://www.w3.org/2000/svg" width="73" height="116" viewBox="0 0 73 116">
-  <g fill="#56CF77" fill-rule="evenodd">
-    <path d="M36.3 27l36 30.8-36 27L0 57.8" opacity=".7"/>
-    <path d="M36.8 13.7l36 30.7-36 27-36.4-27" opacity=".8"/>
-    <path d="M36.3 0l36 30.7-36 27L0 30.7"/>
-    <path d="M0 57.8l36.3 27v30.7L0 87.7" opacity=".8"/>
-    <path d="M72.3 57.8l-36 27v30.7c12-9.4 36-27.8 36-27.8v-30z"/>
-  </g>
-</svg>
+![Fovea logo](./src/Asset/Img/fovea_logo_green.png)
 
 ## Demo
 
