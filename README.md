@@ -2,6 +2,11 @@
 
 > Author: Frederik Wessberg (frra@itu.dk), June 2017.
 
+## Demo
+
+This page is live at [https://www.itu.dk/people/frra/fovea](https://www.itu.dk/people/frra/fovea)
+A clickable mockup is also live at [https://www.itu.dk/people/frra/fovea](https://www.itu.dk/people/frra/fovea-clickable)
+
 ## Disclaimer
 
 This theme is meant as a showcase of modern web technologies such as:
@@ -17,7 +22,7 @@ Since polyfilling the Shadow DOM is a massive challenge and still doesn't accura
 this theme will only work on Chrome, Opera and Safari. For Safari, polyfills for PointerEvents and Web Animations are lazy-loaded.
 
 There are some layout quirks in Safari still, due to the young age of the Shadow DOM v1 spec,
-so **for the best experience, use Chrome or Opera**.
+so **for the best experience, use Chrome, Opera or Opera**.
 
 ## Highlights
 
