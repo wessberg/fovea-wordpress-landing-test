@@ -12,10 +12,11 @@ import {selector} from "../../Component/Component/Component";
 import {ILearnPage} from "./Interface/ILearnPage";
 import {eventUtil, waitOperations} from "../../Service/Services";
 import {EventName} from "../../Static/EventName/EventName";
+import {Resource} from "../../Static/Resource/Resource";
 
 @selector("learn-page-element")
 export class LearnPage extends Page implements ILearnPage {
-	public static routeName = /\/learn/;
+	public static routeName = new RegExp(`${Resource.path.pathname}learn`);
 
 	public static markup (): string {
 		return `

@@ -10,9 +10,14 @@ import {Config} from "@wessberg/environment";
 // These plugins will only be used in the production environment.
 const PRODUCTION_PLUGINS = Config.PRODUCTION ? [
 	{
+		order: 0,
+		plugin: Styler()
+	},
+	{
 		order: 4,
 		plugin: babili({
 			comments: false,
+
 			evaluate: true,
 			deadcode: true,
 			infinity: true,
@@ -41,10 +46,6 @@ const PRODUCTION_PLUGINS = Config.PRODUCTION ? [
 
 // These plugins will always be used.
 const BASE_PLUGINS = [
-	{
-		order: 0,
-		plugin: Styler()
-	},
 	{
 		order: 1,
 		// Inject environment variables into the bundle.

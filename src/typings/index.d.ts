@@ -24,6 +24,7 @@ declare interface WPUser {
 
 declare interface WPDict {
 	templateUrl: string;
+	siteUrl: string;
 	version: string;
 	pages: WPPage[];
 	posts: WPPost[];

@@ -1,6 +1,7 @@
 import {Store} from "../Store/Store";
 import {IWordpressPageStore} from "./Interface/IWordpressPageStore";
 import {IWordpressPage} from "../../Model/WordpressPage/Interface/IWordpressPage";
+import {Resource} from "../../Static/Resource/Resource";
 
 export class WordpressPageStore extends Store implements IWordpressPageStore {
 	public pages: IWordpressPage[] = this.formatWordpressPages();
@@ -14,7 +15,7 @@ export class WordpressPageStore extends Store implements IWordpressPageStore {
 			.filter(page => page.post_type === "page")
 			.map(page => {
 				return {
-					name: `/${page.post_name}`,
+					name: `${Resource.path.pathname}${page.post_name}`,
 					title: page.post_title,
 					order: page.menu_order
 				};

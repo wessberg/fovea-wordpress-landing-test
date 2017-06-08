@@ -21,15 +21,24 @@
            }
     </script>
 	<!-- Add 'shared.css' -->
-	<?php wp_enqueue_style( 'shared', get_stylesheet_directory_uri() . '/shared.css' ); ?>
+	<?php
+	    $stylesheet_uri = /* get_stylesheet_directory_uri(); */ str_replace("http", "https", get_stylesheet_directory_uri());
+	    wp_enqueue_style( 'shared', $stylesheet_uri . '/shared.css' );
+	?>
 
 	<!-- Add '/lib/elements.js' -->
 	<?php
-	    wp_enqueue_script( 'elements', get_template_directory_uri() . (wp_is_mobile() ? '/lib/elements.mobile.js' : '/lib/elements.desktop.js') );?>
+	    $template_directory_uri = /* get_template_directory_uri(); */ str_replace("http", "https", get_template_directory_uri());
+	    wp_enqueue_script( 'elements', $template_directory_uri . (wp_is_mobile() ? '/lib/elements.mobile.js' : '/lib/elements.desktop.js') );
+	?>
 
 	<!-- Add the URL to the template path as a Javascript object for consumption inside the elements bundle. -->
-	<?php wp_localize_script( 'elements', 'WP', array(
-	    'templateUrl' => get_bloginfo('template_url'),
+	<?php
+	    $template_url = /* get_bloginfo('template_url'); */ str_replace("http", "https", get_bloginfo('template_url'));
+	    $site_url = /* get_site_url(); */ str_replace("http", "https", get_site_url());
+	    wp_localize_script( 'elements', 'WP', array(
+	    'templateUrl' => $template_url,
+	    'siteUrl' => $site_url,
 	    'version' => get_bloginfo('version'),
 	    'pages' =>  get_pages(),
 	    'posts' => array_map(function ($post) {
@@ -41,7 +50,8 @@
 
                     // Take the featured image from the post (if it has one)
         	        if (has_post_thumbnail($post->ID)) {
-        	            $featured_image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' )[0];
+        	            $thumbnail_id = get_post_thumbnail_id( $post->ID );
+        	            $featured_image = wp_get_attachment_image_src($thumbnail_id, 'full' );
         	            $castPost['image'] = $featured_image;
         	        }
 

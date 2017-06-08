@@ -7,10 +7,11 @@ import "../../Component/BrowserSupportComponent/BrowserSupportComponent";
 import {Page} from "../Page/Page";
 import {selector} from "../../Component/Component/Component";
 import {IAboutPage} from "./Interface/IAboutPage";
+import {Resource} from "../../Static/Resource/Resource";
 
 @selector("about-page-element")
 export class AboutPage extends Page implements IAboutPage {
-	public static routeName = /\/about/;
+	public static routeName = new RegExp(`${Resource.path.pathname}about`);
 
 	public static markup (): string {
 		return `

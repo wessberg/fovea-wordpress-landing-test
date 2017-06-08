@@ -1,6 +1,7 @@
 import {Component, selector} from "../Component/Component";
 import {IAnchorComponent} from "./Interface/IAnchorComponent";
 import {navigationUtil} from "../../Service/Services";
+import {Resource} from "../../Static/Resource/Resource";
 
 @selector("anchor-element")
 export class AnchorComponent extends Component implements IAnchorComponent {
@@ -69,7 +70,12 @@ export class AnchorComponent extends Component implements IAnchorComponent {
 		e.stopPropagation();
 
 		const href = this.getAttribute("href");
-		if (href != null) await navigationUtil.navigate(href);
+		if (href != null) await navigationUtil.navigate(this.normalizeHref(href));
+	}
+
+	private normalizeHref (href: string): string {
+		const sliced = href.startsWith("/") ? href.slice(1) : href;
+		return `${Resource.path.pathname}${sliced}`;
 	}
 
 	private listenForClicks (): void {

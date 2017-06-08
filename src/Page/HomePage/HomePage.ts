@@ -8,10 +8,11 @@ import "../../Component/MaterialTrianglesComponent/MaterialTrianglesComponent";
 import {Page} from "../Page/Page";
 import {IHomePage} from "./Interface/IHomePage";
 import {selector} from "../../Component/Component/Component";
+import {Resource} from "../../Static/Resource/Resource";
 
 @selector("home-page-element")
 export class HomePage extends Page implements IHomePage {
-	public static routeName = /\//;
+	public static routeName = new RegExp(Resource.path.pathname);
 
 	public static markup (): string {
 		return `

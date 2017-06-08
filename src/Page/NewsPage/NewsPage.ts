@@ -9,10 +9,11 @@ import {Page} from "../Page/Page";
 import {selector} from "../../Component/Component/Component";
 import {INewsPage} from "./Interface/INewsPage";
 import {wordpressPostStore} from "../../Service/Services";
+import {Resource} from "../../Static/Resource/Resource";
 
 @selector("news-page-element")
 export class NewsPage extends Page implements INewsPage {
-	public static routeName = /\/news/;
+	public static routeName = new RegExp(`${Resource.path.pathname}news`);
 
 	public static markup (): string {
 		return `
@@ -112,7 +113,7 @@ export class NewsPage extends Page implements INewsPage {
 	}
 
 	protected async connectedCallback (): Promise<void> {
-		console.log(WP.templateUrl);
+		console.log(WP);
 		await super.connectedCallback();
 		const postsElement = this.element("posts");
 		wordpressPostStore.posts.forEach(post => {

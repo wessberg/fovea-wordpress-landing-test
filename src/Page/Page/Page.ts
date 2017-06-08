@@ -1,6 +1,7 @@
 import {IPage} from "./Interface/IPage";
 import {ScrollComponent} from "../../Component/ScrollComponent/ScrollComponent";
 import {selector} from "../../Component/Component/Component";
+import {Resource} from "../../Static/Resource/Resource";
 
 @selector("page-element")
 export class Page extends ScrollComponent implements IPage {
@@ -15,7 +16,7 @@ export class Page extends ScrollComponent implements IPage {
 	}
 
 	public static testRoute (path: string): boolean {
-		if (`${this.routeName }` === "/\\//") return path === "/" || path === "";
+		if (`${this.routeName }` === `${new RegExp(Resource.path.pathname)}`) return path === "/" || path === "" || path === Resource.path.pathname || path === Resource.path.pathname.slice(0, Resource.path.pathname.length - 1);
 		return this.routeName.test(path);
 	}
 

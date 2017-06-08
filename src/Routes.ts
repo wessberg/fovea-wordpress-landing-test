@@ -5,6 +5,7 @@ import {IWordpressPage} from "./Model/WordpressPage/Interface/IWordpressPage";
 import {IPageConstructor} from "./Page/Page/Interface/IPage";
 import {LearnPage} from "./Page/LearnPage/LearnPage";
 import {NewsPage} from "./Page/NewsPage/NewsPage";
+import {Resource} from "./Static/Resource/Resource";
 
 function findPage (path: IWordpressPage): IPageConstructor {
 	if (HomePage.testRoute(path.name)) return HomePage;
@@ -17,7 +18,7 @@ function findPage (path: IWordpressPage): IPageConstructor {
 export const Routes = (pages: IWordpressPage[]): IRoute[] => {
 	return [
 		{
-			path: "/",
+			path: Resource.path.pathname,
 			title: "Fovea",
 			page: HomePage
 		},

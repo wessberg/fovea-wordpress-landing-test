@@ -18,7 +18,9 @@ export interface IResourceLibPathDict {
 }
 
 export interface IResourcePathDict {
+	template: string;
 	base: string;
+	pathname: string;
 	sharedCss: string;
 	lib: IResourceLibPathDict;
 }
