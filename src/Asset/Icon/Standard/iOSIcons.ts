@@ -1,5 +1,3 @@
-
-
 import {IIcon} from "../Interface/IIcon";
 
 const viewBox = "0 0 512 512";
@@ -917,7 +915,6 @@ export const LOCKED: IIcon = {
 	template: `<path d="M360 224v-72c0-57.4-46.6-104-104-104S152 94.6 152 152v72H96v240h320V224h-56zm-192-72c0-48.5 39.5-88 88-88s88 39.5 88 88v72H168v-72zm232 296H112V240h288v208z"/><path d="M256 288c-17.7 0-32 14.3-32 32 0 15 10.2 27.4 24 31v33h16v-33c13.8-3.6 24-16 24-31 0-17.7-14.3-32-32-32zm0 48c-8.8 0-16-7.2-16-16s7.2-16 16-16 16 7.2 16 16-7.2 16-16 16z"/>`
 };
 
-
 export const LOCKED_FILL: IIcon = {
 	selector: "locked-fill",
 	viewBox,
@@ -929,7 +926,6 @@ export const UNLOCKED: IIcon = {
 	viewBox,
 	template: `<path d="M256 288c-17.7 0-32 14.3-32 32 0 15 10.2 27.4 24 31v33h16v-33c13.8-3.6 24-16 24-31 0-17.7-14.3-32-32-32zm0 48c-8.8 0-16-7.2-16-16s7.2-16 16-16 16 7.2 16 16-7.2 16-16 16z"/><path d="M168 224v-72c0-48.5 39.5-88 88-88s88 39.5 88 88v8h16v-8c0-57.4-46.6-104-104-104S152 94.6 152 152v72H96v240h320V224H168zm232 224H112V240h288v208z"/>`
 };
-
 
 export const UNLOCKED_FILL: IIcon = {
 	selector: "unlocked-fill",

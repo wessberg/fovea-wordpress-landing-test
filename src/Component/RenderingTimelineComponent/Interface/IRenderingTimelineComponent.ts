@@ -1,6 +1,5 @@
 import {IComponent} from "../../Component/IComponent";
 
-
 export interface IRenderingTimelineComponentConstructor {
 	new (): IRenderingTimelineComponent;
 	get00Markup (): string;

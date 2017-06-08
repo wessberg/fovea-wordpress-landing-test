@@ -44,7 +44,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@wessberg/codeanalyzer": "^1.0.26",
+    "@wessberg/codeanalyzer": "^1.0.28",
     "@wessberg/environment": "^1.0.1",
     "@wessberg/fileloader": "^1.0.2",
     "@wessberg/marshaller": "^1.0.22",
@@ -59,8 +59,8 @@
     "rollup-plugin-babili": "^3.0.0",
     "rollup-plugin-gzip": "^1.1.0",
     "rollup-plugin-node-resolve": "^3.0.0",
-    "rollup-plugin-typescript2": "^0.4.2",
-    "rollup-watch": "^3.2.2",
+    "rollup-plugin-typescript2": "^0.4.3",
+    "rollup-watch": "^4.0.0",
     "tslib": "^1.7.1",
     "typescript": "^2.3.4"
   },

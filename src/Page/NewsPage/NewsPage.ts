@@ -30,24 +30,6 @@ export class NewsPage extends Page implements INewsPage {
 		`;
 	}
 
-	protected async connectedCallback(): Promise<void> {
-		await super.connectedCallback();
-		const postsElement = this.element("posts");
-		wordpressPostStore.posts.forEach(post => {
-			const postElement = document.createElement("post-summary-element");
-			postElement.innerHTML = `
-				<h6 slot="author">${post.author.name}</h6>
-				<image-element cover width="60" height="60" src="${post.author.avatar}" slot="avatar" autoload></image-element>
-				<small slot="date">${post.date}</small>
-				<small slot="categories">${post.categories.join(",")}</small>
-				${post.image == null ? "" : `<image-element cover src="${post.image}" slot="image" autoload></image-element>`}
-				<h6 slot="title">${post.title}</h6>
-				<div slot="content">${post.content}</div>
-			`;
-			postsElement.appendChild(postElement);
-		});
-	}
-
 	public static styles () {
 		return super.styles() + `
 
@@ -127,6 +109,25 @@ export class NewsPage extends Page implements INewsPage {
 				}
 			}
 		`;
+	}
+
+	protected async connectedCallback (): Promise<void> {
+		console.log(WP.templateUrl);
+		await super.connectedCallback();
+		const postsElement = this.element("posts");
+		wordpressPostStore.posts.forEach(post => {
+			const postElement = document.createElement("post-summary-element");
+			postElement.innerHTML = `
+				<h6 slot="author">${post.author.name}</h6>
+				<image-element cover width="60" height="60" src="${post.author.avatar}" slot="avatar" autoload></image-element>
+				<small slot="date">${post.date}</small>
+				<small slot="categories">${post.categories.join(",")}</small>
+				${post.image == null ? "" : `<image-element cover src="${post.image}" slot="image" autoload></image-element>`}
+				<h6 slot="title">${post.title}</h6>
+				<div slot="content">${post.content}</div>
+			`;
+			postsElement.appendChild(postElement);
+		});
 	}
 
 }

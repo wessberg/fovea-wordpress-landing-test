@@ -81,5 +81,4 @@ export class AppDrawerComponent extends Component implements IAppDrawerComponent
 		}
 	}
 
-
 }

@@ -11,11 +11,13 @@ export class WordpressPageStore extends Store implements IWordpressPageStore {
 
 	private formatWordpressPages (): IWordpressPage[] {
 		return WP.pages
-			.filter(page => page.post_type === "page" )
-			.map(page => {return {
-				name: `/${page.post_name}`,
-				title: page.post_title,
-				order: page.menu_order
-		}});
+			.filter(page => page.post_type === "page")
+			.map(page => {
+				return {
+					name: `/${page.post_name}`,
+					title: page.post_title,
+					order: page.menu_order
+				};
+			});
 	}
 }

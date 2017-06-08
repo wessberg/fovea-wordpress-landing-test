@@ -210,7 +210,7 @@
     --line-height-body: 1.5;
 
     /* Fonts */
-    --font-family: "Roboto", "Noto", "Helvetica Neue", "Arial", "Verdana", Verdana, sans-serif;
+    --font-family: "Roboto", "Noto", "Helvetica Neue", Arial, Verdana, sans-serif;
     --font-family-monospace: "Roboto Mono", "Inconsolata-g", "Inconsolata-dz", "Inconsolata", "Source Code Pro", Courier;
     --font-weight-thin: 100;
     --font-weight-light: 200;

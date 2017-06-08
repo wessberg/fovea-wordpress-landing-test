@@ -5,7 +5,7 @@ export interface IPage extends IComponent, IPathChangeSubscriber {
 }
 
 export interface IPageConstructor {
-	new (): IPage;
 	routeName: RegExp;
+	new (): IPage;
 	testRoute (path: string): boolean;
 }

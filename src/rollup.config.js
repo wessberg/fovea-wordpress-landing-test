@@ -6,30 +6,78 @@ import Styler from "./Tool/Compiled/Styler";
 import gzip from "rollup-plugin-gzip";
 import {Config} from "@wessberg/environment";
 
+
+// These plugins will only be used in the production environment.
 const PRODUCTION_PLUGINS = Config.PRODUCTION ? [
-	babili({
-		comments: false,
-		evaluate: true,
-		deadcode: true,
-		infinity: true,
-		mangle: true,
-		numericLiterals: true,
-		replace: true,
-		simplify: true,
-		mergeVars: true,
-		booleans: true,
-		regexpConstructors: true,
-		removeConsole: true,
-		removeDebugger: true,
-		removeUndefined: true,
-		undefinedToVoid: true
-	}),
-	gzip({
-		options: {
-			level: 9
-		}
-	})
+	{
+		order: 4,
+		plugin: babili({
+			comments: false,
+			evaluate: true,
+			deadcode: true,
+			infinity: true,
+			mangle: true,
+			numericLiterals: true,
+			replace: true,
+			simplify: true,
+			mergeVars: true,
+			booleans: true,
+			regexpConstructors: true,
+			removeConsole: true,
+			removeDebugger: true,
+			removeUndefined: true,
+			undefinedToVoid: true
+		})
+	},
+	{
+		order: 5,
+		plugin: gzip({
+			options: {
+				level: 9
+			}
+		})
+	}
 ] : [];
+
+// These plugins will always be used.
+const BASE_PLUGINS = [
+	{
+		order: 0,
+		plugin: Styler()
+	},
+	{
+		order: 1,
+		// Inject environment variables into the bundle.
+		plugin: EnvironmentPlugin()
+	},
+	{
+		order: 2,
+		// Transpile with Typescript
+		plugin: typescriptPlugin()
+	},
+	{
+		order: 3,
+		// Inline module dependencies
+		plugin: nodeResolve({
+			module: true,
+			jsnext: true,
+			browser: true,
+			main: true
+		})
+	}
+];
+
+// Sort the plugins by order
+const sortPlugins = (a, b) => {
+	if (a.order < b.order) return -1;
+	if (a.order > b.order) return 1;
+	return 0;
+};
+
+// Sort the plugins by order and take only the plugins from the nested objects.
+const PLUGINS = [...BASE_PLUGINS, ...PRODUCTION_PLUGINS]
+	.sort(sortPlugins)
+	.map(plugin => plugin.plugin);
 
 export default {
 	entry: "index.ts",
@@ -37,24 +85,6 @@ export default {
 	moduleName: "fovea",
 	format: "iife",
 	sourceMap: false,
-	plugins: [
-		Styler(),
-		EnvironmentPlugin(),
-		typescriptPlugin(),
-		nodeResolve({
-			// use "module" field for ES6 module if possible
-			module: true, // Default: true
-
-			// use "jsnext:main" if possible
-			// – see https://github.com/rollup/rollup/wiki/jsnext:main
-			jsnext: true,  // Default: false
-
-			// use "main" field or index.js, even if it's not an ES6 module
-			// (needs to be converted from CommonJS to ES6
-			// – see https://github.com/rollup/rollup-plugin-commonjs
-			main: true,  // Default: true
-		}),
-		...PRODUCTION_PLUGINS
-	],
+	plugins: PLUGINS,
 	treeshake: true
 };

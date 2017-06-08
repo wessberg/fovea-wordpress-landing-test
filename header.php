@@ -7,6 +7,19 @@
 	<meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="white">
     <meta name="theme-color" content="#4caf50">
+
+    <script type="text/javascript">
+        if (!('attachShadow' in Element.prototype && 'getRootNode' in Element.prototype) ||
+           (!window.customElements || window.customElements.forcePolyfill)) {
+                document.write(`
+                   <div style="padding: 10px; display: flex; justify-content: center; align-items: center; flex-direction: column; font-family: 'Roboto', 'Noto', 'Helvetica Neue', Arial, Verdana, sans-serif;">
+                    <h3 style="font-size: 20px; font-weight: 600;">Please visit this site in Chrome, Opera or Safari!</h3>
+                    <h6 style="font-size: 16px;">This site is built with modern technologies such as Custom Elements, Shadow DOM, Web Animations, PointerEvents and CSS Custom properties.</h6>
+                    <h6 style="font-size: 16px;">It is meant as a showcase of the modern component model for the web.</h6>
+                   </div>
+                `);
+           }
+    </script>
 	<!-- Add 'shared.css' -->
 	<?php wp_enqueue_style( 'shared', get_stylesheet_directory_uri() . '/shared.css' ); ?>
 

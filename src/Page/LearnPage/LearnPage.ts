@@ -17,7 +17,6 @@ import {EventName} from "../../Static/EventName/EventName";
 export class LearnPage extends Page implements ILearnPage {
 	public static routeName = /\/learn/;
 
-
 	public static markup (): string {
 		return `
 			<app-drawer-element>
