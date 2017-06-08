@@ -25,7 +25,7 @@ Since polyfilling the Shadow DOM is a massive challenge and still doesn't accura
 this theme will only work on Chrome, Opera and Safari. For Safari, polyfills for PointerEvents and Web Animations are lazy-loaded.
 
 There are some layout quirks in Safari still, due to the young age of the Shadow DOM v1 spec,
-so **for the best experience, use Chrome, Opera or Opera**.
+so **for the best experience, use Chrome or Opera**.
 
 ## Highlights
 

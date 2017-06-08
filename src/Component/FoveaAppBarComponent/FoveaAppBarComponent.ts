@@ -118,7 +118,7 @@ export class FoveaAppBarComponent extends Component implements IFoveaAppBarCompo
 						<p>Fovea</p>
 					</app-bar-item-element>
 				</anchor-element>
-				<anchor-element href="https://github.com/wessberg/" target="_blank" slot="rightIcon">
+				<anchor-element href="https://github.com/wessberg/fovea-wordpress-landing-test" target="_blank" slot="rightIcon">
 					<app-bar-item-element id="githubItem" round>
 						<icon-element icon="github-logo" light medium></icon-element>
 					</app-bar-item-element>
