@@ -10,6 +10,10 @@ This page is live at [https://www.itu.dk/people/frra/fovea](https://www.itu.dk/p
 
 A clickable mockup is also live at [https://www.itu.dk/people/frra/fovea-clickable](https://www.itu.dk/people/frra/fovea-clickable)
 
+## Description
+
+Fovea is an Ahead-Of-Time compiled UI library that is currently under construction. This theme has been written as part of a course on the IT-University of Copenhagen in 2017.
+
 ## Disclaimer
 
 This theme is meant as a showcase of modern web technologies such as:
